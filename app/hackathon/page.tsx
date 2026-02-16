@@ -195,50 +195,50 @@ export default function HackathonPage() {
 
         {/* Prizes Section */}
         <div className="mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold uppercase leading-none mb-8">
+          {/*<h2 className="text-4xl md:text-5xl font-bold uppercase leading-none mb-8">
             Prizes & Recognition
-          </h2>
+          </h2>*/}
           <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent mb-8"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* First Prize */}
-            <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 backdrop-blur-sm p-8 rounded-lg border-2 border-yellow-400 shadow-[0_0_30px_rgba(234,179,8,0.3)] text-center">
+            {/*<div className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 backdrop-blur-sm p-8 rounded-lg border-2 border-yellow-400 shadow-[0_0_30px_rgba(234,179,8,0.3)] text-center">
               <div className="text-5xl mb-4">🥇</div>
               <h3 className="text-3xl font-bold mb-3 text-yellow-400">
                 1st Place
               </h3>
               <p className="text-4xl font-bold mb-2">₹1,00,000</p>
               <p className="text-gray-300">+ Certificate + Mentorship</p>
-            </div>
+            </div>*/}
 
             {/* Second Prize */}
-            <div className="bg-gradient-to-br from-gray-300/20 to-gray-400/10 backdrop-blur-sm p-8 rounded-lg border-2 border-gray-300 shadow-[0_0_20px_rgba(200,200,200,0.2)] text-center">
+            {/*<div className="bg-gradient-to-br from-gray-300/20 to-gray-400/10 backdrop-blur-sm p-8 rounded-lg border-2 border-gray-300 shadow-[0_0_20px_rgba(200,200,200,0.2)] text-center">
               <div className="text-5xl mb-4">🥈</div>
               <h3 className="text-3xl font-bold mb-3 text-gray-300">
                 2nd Place
               </h3>
               <p className="text-4xl font-bold mb-2">₹50,000</p>
               <p className="text-gray-300">+ Certificate + Mentorship</p>
-            </div>
+            </div>*/}
 
             {/* Third Prize */}
-            <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/10 backdrop-blur-sm p-8 rounded-lg border-2 border-orange-400 shadow-[0_0_20px_rgba(251,146,60,0.2)] text-center">
+            {/*<div className="bg-gradient-to-br from-orange-500/20 to-orange-600/10 backdrop-blur-sm p-8 rounded-lg border-2 border-orange-400 shadow-[0_0_20px_rgba(251,146,60,0.2)] text-center">
               <div className="text-5xl mb-4">🥉</div>
               <h3 className="text-3xl font-bold mb-3 text-orange-400">
                 3rd Place
               </h3>
               <p className="text-4xl font-bold mb-2">₹25,000</p>
               <p className="text-gray-300">+ Certificate + Mentorship</p>
-            </div>
+            </div>*/}
           </div>
 
-          <div className="mt-8 bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10">
+          {/*<div className="mt-8 bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10">
             <p className="text-center text-lg text-gray-200">
               <strong className="text-yellow-400">Special Prizes:</strong> Best
               Innovation Award, Best Student Team, Industry Choice Award, and
               more!
             </p>
-          </div>
+          </div>*/}
         </div>
 
         {/* Two Column Content */}
