@@ -24,17 +24,39 @@ interface DBRegistration {
 
 // Initialize Firebase Admin SDK
 if (!getApps().length) {
-  initializeApp({
-    credential: cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-    }),
-  });
+  const projectId = process.env.FIREBASE_PROJECT_ID;
+  const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
+  const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+
+  if (!projectId || !clientEmail || !privateKey) {
+    console.warn("⚠️  Firebase Admin SDK credentials not configured");
+    console.warn(
+      "API routes will return 503 until credentials are added to .env.local",
+    );
+  } else {
+    try {
+      initializeApp({
+        credential: cert({
+          projectId,
+          clientEmail,
+          privateKey,
+        }),
+      });
+      console.log("✓ Firebase Admin SDK initialized");
+    } catch (error) {
+      console.error("❌ Failed to initialize Firebase Admin SDK:", error);
+    }
+  }
 }
 
 // Verify Firebase ID token
 async function verifyToken(request: NextRequest) {
+  // Check if Firebase Admin is initialized
+  if (!getApps().length) {
+    console.error("Firebase Admin SDK not initialized");
+    return null;
+  }
+
   const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
@@ -53,6 +75,18 @@ async function verifyToken(request: NextRequest) {
 // POST /api/registrations - Create a new registration
 export async function POST(request: NextRequest) {
   try {
+    // Check if Firebase Admin is configured
+    if (!getApps().length || !process.env.FIREBASE_PROJECT_ID) {
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            "Service not configured. Please add Firebase Admin SDK credentials to .env.local",
+        },
+        { status: 503 },
+      );
+    }
+
     // Verify authentication
     const decodedToken = await verifyToken(request);
     if (!decodedToken) {
@@ -182,6 +216,18 @@ export async function POST(request: NextRequest) {
 // GET /api/registrations - Get all registrations for current user
 export async function GET(request: NextRequest) {
   try {
+    // Check if Firebase Admin is configured
+    if (!getApps().length || !process.env.FIREBASE_PROJECT_ID) {
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            "Service not configured. Please add Firebase Admin SDK credentials to .env.local",
+        },
+        { status: 503 },
+      );
+    }
+
     // Verify authentication
     const decodedToken = await verifyToken(request);
     if (!decodedToken) {
