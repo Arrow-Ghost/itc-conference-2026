@@ -4,6 +4,24 @@ import { UserDB, RegistrationDB } from "@/lib/db";
 import { auth } from "firebase-admin";
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 
+// Type for database registration record
+interface DBRegistration {
+  id: number;
+  user_id: number;
+  uid: string;
+  name: string;
+  email: string;
+  phone: string;
+  institution: string;
+  department: string;
+  year: string;
+  registration_type: string;
+  additional_info: string | null;
+  status: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 // Initialize Firebase Admin SDK
 if (!getApps().length) {
   initializeApp({
@@ -154,8 +172,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        error:
-          error instanceof Error ? error.message : "Internal server error",
+        error: error instanceof Error ? error.message : "Internal server error",
       },
       { status: 500 },
     );
@@ -181,7 +198,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      data: registrations.map((reg) => ({
+      data: registrations.map((reg: DBRegistration) => ({
         id: reg.id,
         userId: reg.user_id,
         uid: reg.uid,
@@ -203,8 +220,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        error:
-          error instanceof Error ? error.message : "Internal server error",
+        error: error instanceof Error ? error.message : "Internal server error",
       },
       { status: 500 },
     );
