@@ -1,0 +1,83 @@
+// Firebase configuration and initialization
+import { initializeApp, getApps, FirebaseApp } from "firebase/app";
+import { getAuth, Auth } from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+};
+
+// Validate Firebase configuration
+function validateFirebaseConfig() {
+  const missingKeys: string[] = [];
+  
+  if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
+    missingKeys.push("NEXT_PUBLIC_FIREBASE_API_KEY");
+  }
+  if (!process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN) {
+    missingKeys.push("NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN");
+  }
+  if (!process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) {
+    missingKeys.push("NEXT_PUBLIC_FIREBASE_PROJECT_ID");
+  }
+  if (!process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET) {
+    missingKeys.push("NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET");
+  }
+  if (!process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID) {
+    missingKeys.push("NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID");
+  }
+  if (!process.env.NEXT_PUBLIC_FIREBASE_APP_ID) {
+    missingKeys.push("NEXT_PUBLIC_FIREBASE_APP_ID");
+  }
+
+  if (missingKeys.length > 0) {
+    console.error("❌ Firebase configuration error!");
+    console.error("Missing environment variables:");
+    missingKeys.forEach((key) => console.error(`  - ${key}`));
+    console.error("\n📝 To fix this:");
+    console.error(
+      "1. Make sure .env.local exists in the project root",
+    );
+    console.error("2. Check that all NEXT_PUBLIC_FIREBASE_* variables are set");
+    console.error("3. Restart your dev server after making changes");
+    console.error(
+      "\nSee CREDENTIALS_CONFIGURED.md for detailed instructions.\n",
+    );
+    throw new Error(
+      "Firebase credentials are missing. Please configure .env.local file.",
+    );
+  }
+
+  // Validate that values are not placeholders
+  const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
+  if (apiKey && (apiKey.includes("your-") || apiKey === "your-api-key-here")) {
+    console.error("❌ Firebase configuration error!");
+    console.error("Your .env.local still contains placeholder values!");
+    console.error("Please replace them with real Firebase credentials.");
+    console.error("\nSee CREDENTIALS_CONFIGURED.md for instructions.\n");
+    throw new Error(
+      "Firebase credentials contain placeholder values. Please update .env.local file.",
+    );
+  }
+}
+
+// Validate config before initializing (only in browser)
+if (typeof window !== "undefined") {
+  validateFirebaseConfig();
+}
+
+// Initialize Firebase only if it hasn't been initialized yet
+let app: FirebaseApp;
+if (!getApps().length) {
+  app = initializeApp(firebaseConfig);
+} else {
+  app = getApps()[0];
+}
+
+// Initialize Firebase Auth
+export const auth = getAuth(app);
+export default app;
