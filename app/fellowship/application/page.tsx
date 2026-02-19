@@ -9,7 +9,7 @@ import {
   updateMyRegistration,
   Registration,
 } from "@/lib/api";
-import { signOut } from "@/lib/auth";
+
 import Image from "next/image";
 
 export default function FellowshipApplication() {
@@ -30,6 +30,8 @@ export default function FellowshipApplication() {
     email: "",
     phone: "",
     institution: "",
+    city: "",
+    state: "",
     department: "",
     year: "",
     additionalInfo: "",
@@ -53,6 +55,8 @@ export default function FellowshipApplication() {
           email: result.data.email,
           phone: result.data.phone,
           institution: result.data.institution,
+          city: result.data.city || "",
+          state: result.data.state || "",
           department: result.data.department,
           year: result.data.year,
           additionalInfo: result.data.additionalInfo || "",
@@ -64,6 +68,8 @@ export default function FellowshipApplication() {
           email: user?.email || "",
           phone: "",
           institution: "",
+          city: "",
+          state: "",
           department: "",
           year: "",
           additionalInfo: "",
@@ -80,7 +86,7 @@ export default function FellowshipApplication() {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -95,10 +101,7 @@ export default function FellowshipApplication() {
     setSubmitting(true);
 
     // Validate institutional email
-    if (
-      !formData.email.includes(".edu") &&
-      !formData.email.includes(".ac.")
-    ) {
+    if (!formData.email.includes(".edu") && !formData.email.includes(".ac.")) {
       setError("Please use your institutional email address");
       setSubmitting(false);
       return;
@@ -133,15 +136,6 @@ export default function FellowshipApplication() {
       setError("An unexpected error occurred. Please try again.");
     } finally {
       setSubmitting(false);
-    }
-  };
-
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      router.push("/");
-    } catch (err) {
-      console.error("Error signing out:", err);
     }
   };
 
@@ -189,27 +183,11 @@ export default function FellowshipApplication() {
 
       <div className="relative z-10 container mx-auto px-4 py-8 md:py-12 max-w-6xl">
         {/* Header */}
-        <div className="flex justify-between items-start mb-8 flex-wrap gap-4">
-          <div>
-            <h1 className="text-3xl md:text-5xl font-bold mb-2 uppercase">
-              Fellowship Application
-            </h1>
-            <p className="text-gray-300">Welcome, {user?.displayName}</p>
-          </div>
-          <div className="flex gap-2 flex-wrap">
-            <button
-              onClick={() => router.push("/dashboard")}
-              className="px-4 py-2 border border-white/50 rounded-full hover:bg-white/10 transition-colors text-sm md:text-base"
-            >
-              Dashboard
-            </button>
-            <button
-              onClick={handleSignOut}
-              className="px-4 py-2 border border-white/50 rounded-full hover:bg-white/10 transition-colors text-sm md:text-base"
-            >
-              Sign Out
-            </button>
-          </div>
+        <div className="mb-8 mt-24 md:mt-32">
+          <h1 className="text-3xl md:text-5xl font-bold mb-2 uppercase">
+            Fellowship Application
+          </h1>
+          <p className="text-gray-300">Welcome, {user?.displayName}</p>
         </div>
 
         {/* Success Message */}
@@ -284,6 +262,18 @@ export default function FellowshipApplication() {
                     </label>
                     <p className="text-lg">{registration.institution}</p>
                   </div>
+                  <div>
+                    <label className="text-sm text-gray-300 block mb-1">
+                      City
+                    </label>
+                    <p className="text-lg">{registration.city || "N/A"}</p>
+                  </div>
+                  <div>
+                    <label className="text-sm text-gray-300 block mb-1">
+                      State
+                    </label>
+                    <p className="text-lg">{registration.state || "N/A"}</p>
+                  </div>
                 </div>
                 <div className="space-y-6">
                   <div>
@@ -318,7 +308,7 @@ export default function FellowshipApplication() {
                               year: "numeric",
                               month: "long",
                               day: "numeric",
-                            }
+                            },
                           )
                         : "N/A"}
                     </p>
@@ -417,6 +407,46 @@ export default function FellowshipApplication() {
                       required
                       className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
                       placeholder="Your institution name"
+                    />
+                  </div>
+
+                  {/* City */}
+                  <div>
+                    <label
+                      htmlFor="city"
+                      className="block text-sm font-medium mb-2"
+                    >
+                      City *
+                    </label>
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      placeholder="Your city"
+                    />
+                  </div>
+
+                  {/* State */}
+                  <div>
+                    <label
+                      htmlFor="state"
+                      className="block text-sm font-medium mb-2"
+                    >
+                      State *
+                    </label>
+                    <input
+                      type="text"
+                      id="state"
+                      name="state"
+                      value={formData.state}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      placeholder="Your state"
                     />
                   </div>
 
@@ -538,7 +568,11 @@ export default function FellowshipApplication() {
                         Saving...
                       </>
                     ) : (
-                      <>{registration ? "Update Application" : "Submit Application"}</>
+                      <>
+                        {registration
+                          ? "Update Application"
+                          : "Submit Application"}
+                      </>
                     )}
                   </button>
                   {registration && isEditing && (
@@ -551,6 +585,8 @@ export default function FellowshipApplication() {
                           email: registration.email,
                           phone: registration.phone,
                           institution: registration.institution,
+                          city: registration.city || "",
+                          state: registration.state || "",
                           department: registration.department,
                           year: registration.year,
                           additionalInfo: registration.additionalInfo || "",

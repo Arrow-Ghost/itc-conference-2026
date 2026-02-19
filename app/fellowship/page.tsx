@@ -28,7 +28,7 @@ export default function FellowshipPage() {
         </div>
       </div>
 
-      <div className="relative z-10 pt-37.5 pb-20 px-6 md:px-16 max-w-350 mx-auto flex flex-col">
+      <div className="relative z-10 pt-37.5 pb-20 px-6 md:px-16 max-w-350 mx-auto flex flex-col mt-24 md:mt-32">
         {/* Header Section */}
         <div className="max-w-3xl mb-24 relative">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight uppercase">

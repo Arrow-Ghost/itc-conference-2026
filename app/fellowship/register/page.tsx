@@ -37,7 +37,7 @@ export default function FellowshipRegisterPage() {
         </div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-12 max-w-7xl">
+      <div className="relative z-10 container mx-auto px-4 py-12 max-w-7xl mt-24 md:mt-32">
         {/* Header Section */}
         <div className="mb-12 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 uppercase tracking-tight pt-15">
