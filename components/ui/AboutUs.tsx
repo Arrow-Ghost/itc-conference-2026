@@ -3,7 +3,10 @@ import CountdownTimer from "./CountdownTimer";
 
 export default function AboutUs() {
   return (
-    <section className="about-us-section relative w-full mt-0 sm:mt-0 pt-0 sm:pt-20 md:pt-24 lg:pt-30 pb-8 sm:pb-0 px-[5%] sm:px-4 md:px-6 lg:px-8 xl:px-[2.25%] text-white overflow-x-hidden">
+    <section
+      id="about"
+      className="about-us-section relative w-full mt-0 sm:mt-0 pt-0 sm:pt-20 md:pt-24 lg:pt-30 pb-8 sm:pb-0 px-[5%] sm:px-4 md:px-6 lg:px-8 xl:px-[2.25%] text-white overflow-x-hidden"
+    >
       {/* Zig-zag Line at the top - matching side lines positioning */}
       <div className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[110px] xl:h-[123px] pointer-events-none -z-10 opacity-60 sm:opacity-70 md:opacity-80">
         <Image

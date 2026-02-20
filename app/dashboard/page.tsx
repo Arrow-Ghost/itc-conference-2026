@@ -104,19 +104,11 @@ export default function DashboardPage() {
 
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-6xl">
         {/* Header */}
-        <div className="mb-8 flex justify-between items-start flex-wrap gap-4">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-2">Dashboard</h1>
-            <p className="text-gray-300">
-              Welcome back, {user?.displayName || "User"}
-            </p>
-          </div>
-          <button
-            onClick={handleSignOut}
-            className="px-6 py-2 border border-white/50 rounded-full hover:bg-white/10 transition-colors"
-          >
-            Sign Out
-          </button>
+        <div className="mb-8 mt-24 md:mt-32">
+          <h1 className="text-4xl md:text-5xl font-bold mb-2">Dashboard</h1>
+          <p className="text-gray-300">
+            Welcome back, {user?.displayName || "User"}
+          </p>
         </div>
 
         {/* User Info Card */}
@@ -190,6 +182,18 @@ export default function DashboardPage() {
                     : "N/A"}
                 </p>
               </div>
+              {registration.city && (
+                <div>
+                  <p className="text-gray-300 text-sm mb-1">City</p>
+                  <p className="text-lg">{registration.city}</p>
+                </div>
+              )}
+              {registration.state && (
+                <div>
+                  <p className="text-gray-300 text-sm mb-1">State</p>
+                  <p className="text-lg">{registration.state}</p>
+                </div>
+              )}
             </div>
 
             {registration.additionalInfo && (
@@ -198,6 +202,37 @@ export default function DashboardPage() {
                   Additional Information
                 </p>
                 <p className="text-lg">{registration.additionalInfo}</p>
+              </div>
+            )}
+
+            {/* Paper Submission Info */}
+            {registration.paperId && (
+              <div className="mb-6 p-4 bg-white/5 border border-white/20 rounded-lg">
+                <h3 className="text-xl font-bold mb-4">Paper Submission</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-gray-300 text-sm mb-1">Paper ID</p>
+                    <p className="text-lg font-mono">{registration.paperId}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-300 text-sm mb-1">Status</p>
+                    <span
+                      className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
+                        registration.paperStatus === "approved"
+                          ? "bg-green-500/20 border border-green-500/50 text-green-200"
+                          : registration.paperStatus === "rejected"
+                            ? "bg-red-500/20 border border-red-500/50 text-red-200"
+                            : "bg-yellow-500/20 border border-yellow-500/50 text-yellow-200"
+                      }`}
+                    >
+                      {registration.paperStatus === "approved"
+                        ? "✓ Approved"
+                        : registration.paperStatus === "rejected"
+                          ? "✗ Not Approved"
+                          : "⏳ Pending Review"}
+                    </span>
+                  </div>
+                </div>
               </div>
             )}
 

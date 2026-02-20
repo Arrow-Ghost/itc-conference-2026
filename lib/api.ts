@@ -14,10 +14,14 @@ export interface Registration {
   email: string;
   phone: string;
   institution: string;
+  city?: string;
+  state?: string;
   department: string;
   year: string;
   registrationType: "fellowship" | "hackathon" | "cfp" | "cft" | "art";
   additionalInfo?: string;
+  paperId?: string;
+  paperStatus?: "pending" | "approved" | "rejected";
   createdAt?: string;
   updatedAt?: string;
 }

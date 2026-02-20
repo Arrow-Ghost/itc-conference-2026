@@ -50,16 +50,17 @@ export default function FellowshipApplication() {
 
       if (result.success && result.data) {
         setRegistration(result.data);
+        const data = result.data as Registration;
         setFormData({
-          name: result.data.name,
-          email: result.data.email,
-          phone: result.data.phone,
-          institution: result.data.institution,
-          city: result.data.city || "",
-          state: result.data.state || "",
-          department: result.data.department,
-          year: result.data.year,
-          additionalInfo: result.data.additionalInfo || "",
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          institution: data.institution,
+          city: data.city || "",
+          state: data.state || "",
+          department: data.department,
+          year: data.year,
+          additionalInfo: data.additionalInfo || "",
         });
       } else {
         // No registration found, prefill with user data

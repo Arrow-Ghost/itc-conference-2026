@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useAuth } from "@/lib/AuthContext";
+import { useRouter, usePathname } from "next/navigation";
 
 const navLinks = [
   { name: "HOME", href: "/" },
@@ -26,6 +28,7 @@ const navLinks = [
       { name: "Sponsors Page", href: "/sponsors" },
     ],
   },
+  { name: "CONTACT US", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -33,15 +36,27 @@ export default function Navbar() {
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<
     string | null
   >(null);
+  const { user, signOut } = useAuth();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const toggleMobileDropdown = (name: string) => {
     setActiveMobileDropdown(activeMobileDropdown === name ? null : name);
   };
 
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      router.push("/");
+    } catch (err) {
+      console.error("Error signing out:", err);
+    }
+  };
+
   return (
     <>
       {/* Desktop Navbar */}
-      <nav className="absolute top-7 left-[2.25%] right-[2.25%] h-[68px] border-[2px] border-white items-center justify-start px-4 xl:px-10 z-50 bg-transparent hidden xl:flex">
+      <nav className="fixed top-7 left-[2.25%] right-[2.25%] h-[68px] border-[2px] border-white items-center justify-start px-4 xl:px-10 z-50 bg-[#03396c]/95 backdrop-blur-md hidden xl:flex transition-all duration-300">
         <div className="relative w-[131px] h-[38px]">
           <Link href="/">
             <Image
@@ -103,6 +118,30 @@ export default function Navbar() {
             </div>
           ))}
         </div>
+        {user &&
+          (pathname === "/fellowship/application" ||
+            pathname === "/fellowship" ||
+            pathname === "/fellowship/register" ||
+            pathname === "/dashboard") && (
+            <div className="ml-auto flex gap-3">
+              {(pathname === "/fellowship/application" ||
+                pathname === "/fellowship" ||
+                pathname === "/fellowship/register") && (
+                <button
+                  onClick={() => router.push("/dashboard")}
+                  className="px-4 py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors text-sm font-poppins font-semibold"
+                >
+                  Dashboard
+                </button>
+              )}
+              <button
+                onClick={handleSignOut}
+                className="px-4 py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors text-sm font-poppins font-semibold"
+              >
+                Sign Out
+              </button>
+            </div>
+          )}
       </nav>
 
       {/* Mobile Navbar */}
