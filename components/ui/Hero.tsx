@@ -15,7 +15,6 @@ export default function Hero() {
               fill
               className="object-contain"
               priority
-              className="size-10"
             />
           </div>
 
