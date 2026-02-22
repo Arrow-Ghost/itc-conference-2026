@@ -6,7 +6,6 @@ export default function Timeline() {
       id="timeline"
       className="relative w-full flex flex-col items-center mt-0 sm:mt-0 pt-8 sm:pt-20 md:pt-24 lg:pt-30 xl:pt-[180px] mb-0 px-[5%] sm:px-4 md:px-6 lg:px-8 overflow-x-hidden"
     >
-      {/* Zig-zag Line at the top - matching side lines positioning */}
       <div className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[110px] xl:h-[123px] pointer-events-none -z-10 opacity-60 sm:opacity-70 md:opacity-80">
         <Image
           src="/images/vector11.svg"
@@ -16,7 +15,6 @@ export default function Timeline() {
         />
       </div>
 
-      {/* Mobile heading - normal flow */}
       <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[40px] md:text-[50px] lg:text-[60px] xl:text-[75px] text-white mb-4 sm:mb-8 md:mb-12 xl:mb-20 relative xl:absolute top-0 sm:top-[25px] md:top-[20px] left-0 sm:left-[9%] md:left-[7%] xl:left-[10%] z-10 text-left xl:text-left w-full xl:w-auto">
         TIMELINE
       </h2>

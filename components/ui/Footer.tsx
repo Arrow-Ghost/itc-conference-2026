@@ -5,7 +5,6 @@ export default function Footer() {
   return (
     <footer className="relative w-full pt-12 sm:pt-16 md:pt-20 pb-70 sm:pb-16 md:pb-20 px-[5%] sm:px-6 md:px-8 xl:px-[86px] text-white overflow-x-hidden">
 
-      {/* Divider Line - matching top line format */}
       <div
         className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[1px] my-10 opacity-60 sm:opacity-70 md:opacity-80"
         style={{
@@ -13,7 +12,6 @@ export default function Footer() {
         }}
       ></div>
 
-      {/* Newsletter Section */}
       <div className="relative w-full max-w-full sm:max-w-[1027px] mx-auto min-h-[150px] sm:min-h-[170px] md:min-h-[191px] bg-[#fcfcfc] rounded mb-8 sm:mb-16 md:mb-20 flex flex-col sm:flex-row items-center justify-center sm:justify-between px-4 sm:px-6 md:px-10 py-6 sm:py-0 gap-4 sm:gap-0">
         <div className="flex-1 mb-0 sm:mb-0 text-center sm:text-left">
           <h3 className="font-roboto-slab font-semibold text-[20px] sm:text-[30px] md:text-[36px] xl:text-[40px] text-[#022241]">
@@ -42,7 +40,6 @@ export default function Footer() {
           <a href="mailto:info@itctestweekindia.org" className="opacity-80 hover:opacity-100 text-[12px] sm:text-[16px] md:text-[18px] xl:text-[20px] break-all">info@itctestweekindia.org</a>
         </div>
 
-        {/* Submissions */}
         <div className="font-poppins text-[14px] sm:text-[18px] md:text-[20px] xl:text-[22px] w-full sm:w-[45%] xl:w-auto mb-4 sm:mb-0">
           <h4 className="mb-2 sm:mb-4">Submissions</h4>
           <ul className="space-y-2">
@@ -56,7 +53,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Conference */}
         <div className="font-poppins text-[14px] sm:text-[18px] md:text-[20px] xl:text-[22px] w-full sm:w-[45%] xl:w-auto mb-4 sm:mb-0">
           <h4 className="mb-2 sm:mb-4">Conference</h4>
           <ul className="space-y-2">
@@ -68,7 +64,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Location */}
         <div className="font-poppins text-[14px] sm:text-[18px] md:text-[20px] xl:text-[22px] w-full sm:w-[45%] xl:w-auto mb-4 sm:mb-0">
           <h4 className="mb-2 sm:mb-4">Conference Location</h4>
           <Link href="https://maps.app.goo.gl/Su9eU1hLBaaRZcKEA" className="underline decoration-solid text-[12px] sm:text-[16px] md:text-[18px] xl:text-[22px]">

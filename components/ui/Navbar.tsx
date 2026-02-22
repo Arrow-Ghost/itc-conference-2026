@@ -55,7 +55,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Desktop Navbar */}
       <nav className="fixed top-7 left-[2.25%] right-[2.25%] h-[68px] border-[2px] border-white items-center justify-start px-4 xl:px-10 z-50 bg-[#03396c]/95 backdrop-blur-md hidden xl:flex transition-all duration-300">
         <div className="relative w-[131px] h-[38px]">
           <Link href="/">
@@ -92,7 +91,6 @@ export default function Navbar() {
                       ></path>
                     </svg>
                   </span>
-                  {/* Dropdown Menu */}
                   <div className="absolute top-full left-0 mt-0 w-56 bg-[#03396c]/95 border border-white/20 backdrop-blur-md rounded-b-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top pt-2">
                     <div className="flex flex-col py-2">
                       {link.dropdown.map((item) => (
@@ -144,7 +142,6 @@ export default function Navbar() {
           )}
       </nav>
 
-      {/* Mobile Navbar */}
       <nav className="fixed top-0 left-0 right-0 h-[56px] sm:h-[60px] xl:hidden border-b-[2px] border-white flex items-center justify-between px-3 sm:px-4 z-50 bg-[#03396c] backdrop-blur-sm">
         <div className="relative w-[90px] h-[28px] sm:w-[100px] sm:h-[30px]">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
@@ -188,7 +185,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="fixed top-[56px] sm:top-[60px] left-0 right-0 bg-[#03396c] border-b-[2px] border-white z-40 xl:hidden shadow-lg animate-slideDown max-h-[calc(100vh-60px)] overflow-y-auto">
           <div className="flex flex-col py-2">

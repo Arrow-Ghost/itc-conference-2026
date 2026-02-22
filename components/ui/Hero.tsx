@@ -29,7 +29,6 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Subtitle */}
             <h3 className="hero-subtitle font-space-grotesk font-bold text-[18px] leading-[1.2] sm:text-[24px] md:text-[28px] lg:text-[30px] xl:text-[32px] mt-1 sm:mt-4 md:mt-4 xl:mt-5 max-w-[600px] leading-normal uppercase">
               AN INITIATIVE TOWARDS INDIA&apos;S
               <br className="hidden sm:block" />
@@ -38,7 +37,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Circuit Image - Right side, constrained to side lines - Hidden only on phones */}
         <div className="hidden sm:block relative w-full sm:w-[45%] md:w-[48%] lg:w-[52%] xl:w-[55%] pointer-events-none flex-shrink-0 min-h-[350px] sm:min-h-[420px] md:min-h-[550px] lg:min-h-[650px] xl:min-h-[750px] pr-2 sm:pr-4 md:pr-6 xl:pr-0">
           <div className="relative w-full h-full">
             <Image
@@ -53,7 +51,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Horizontal Line at the end of Hero Section */}
       {/* <div
         className="absolute bottom-0 left-[2.25%] right-[2.25%] h-[2px] hidden xl:block"
         style={{
