@@ -1,6 +1,7 @@
 // Firebase configuration and initialization
 import { initializeApp, getApps, FirebaseApp } from "firebase/app";
 import { getAuth, Auth } from "firebase/auth";
+import { getStorage, FirebaseStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,7 +15,7 @@ const firebaseConfig = {
 // Validate Firebase configuration
 function validateFirebaseConfig() {
   const missingKeys: string[] = [];
-  
+
   if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
     missingKeys.push("NEXT_PUBLIC_FIREBASE_API_KEY");
   }
@@ -39,9 +40,7 @@ function validateFirebaseConfig() {
     console.error("Missing environment variables:");
     missingKeys.forEach((key) => console.error(`  - ${key}`));
     console.error("\n📝 To fix this:");
-    console.error(
-      "1. Make sure .env.local exists in the project root",
-    );
+    console.error("1. Make sure .env.local exists in the project root");
     console.error("2. Check that all NEXT_PUBLIC_FIREBASE_* variables are set");
     console.error("3. Restart your dev server after making changes");
     console.error(
@@ -80,4 +79,8 @@ if (!getApps().length) {
 
 // Initialize Firebase Auth
 export const auth = getAuth(app);
+
+// Initialize Firebase Storage
+export const storage = getStorage(app);
+
 export default app;

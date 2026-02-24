@@ -308,5 +308,238 @@ export const RegistrationDB = {
   },
 };
 
+// Paper Submission database operations
+export const PaperSubmissionDB = {
+  /**
+   * Create a new paper submission
+   */
+  async create(submissionData: {
+    paperId: string;
+    registrationId?: number;
+    uid: string;
+    authorName: string;
+    authorEmail: string;
+    authorPhone: string;
+    authorInstitution: string;
+    authorDepartment: string;
+    coAuthors?: unknown;
+    paperTitle: string;
+    paperAbstract: string;
+    keywords?: string;
+    paperType?: string;
+    trackType?: string;
+    fileUrl: string;
+    firebasePath: string;
+    fileName: string;
+    fileSize?: number;
+    mimeType?: string;
+  }) {
+    const {
+      paperId,
+      registrationId,
+      uid,
+      authorName,
+      authorEmail,
+      authorPhone,
+      authorInstitution,
+      authorDepartment,
+      coAuthors,
+      paperTitle,
+      paperAbstract,
+      keywords,
+      paperType,
+      trackType,
+      fileUrl,
+      firebasePath,
+      fileName,
+      fileSize,
+      mimeType,
+    } = submissionData;
+
+    // Get the user_id from users table
+    const userResult = await query("SELECT id FROM users WHERE uid = $1", [
+      uid,
+    ]);
+    const userId = userResult.rows[0]?.id;
+
+    const result = await query(
+      `INSERT INTO paper_submissions (
+        paper_id, registration_id, user_id, uid,
+        author_name, author_email, author_phone, author_institution, author_department,
+        co_authors, paper_title, paper_abstract, keywords, paper_type, track_type,
+        file_url, firebase_path, file_name, file_size, mime_type
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)
+      RETURNING *`,
+      [
+        paperId,
+        registrationId,
+        userId,
+        uid,
+        authorName,
+        authorEmail,
+        authorPhone,
+        authorInstitution,
+        authorDepartment,
+        coAuthors ? JSON.stringify(coAuthors) : null,
+        paperTitle,
+        paperAbstract,
+        keywords,
+        paperType,
+        trackType,
+        fileUrl,
+        firebasePath,
+        fileName,
+        fileSize,
+        mimeType,
+      ],
+    );
+
+    return result.rows[0];
+  },
+
+  /**
+   * Find paper submission by paper ID
+   */
+  async findByPaperId(paperId: string) {
+    const result = await query(
+      "SELECT * FROM paper_submissions WHERE paper_id = $1",
+      [paperId],
+    );
+    return result.rows[0] || null;
+  },
+
+  /**
+   * Find paper submissions by user UID
+   */
+  async findByUid(uid: string) {
+    const result = await query(
+      "SELECT * FROM paper_submissions WHERE uid = $1 ORDER BY submitted_at DESC",
+      [uid],
+    );
+    return result.rows;
+  },
+
+  /**
+   * Find paper submission by registration ID
+   */
+  async findByRegistrationId(registrationId: number) {
+    const result = await query(
+      "SELECT * FROM paper_submissions WHERE registration_id = $1",
+      [registrationId],
+    );
+    return result.rows[0] || null;
+  },
+
+  /**
+   * Update paper submission status
+   */
+  async updateStatus(
+    paperId: string,
+    status: string,
+    reviewerComments?: string,
+    adminNotes?: string,
+  ) {
+    const result = await query(
+      `UPDATE paper_submissions
+       SET status = $1, reviewer_comments = $2, admin_notes = $3,
+           reviewed_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP
+       WHERE paper_id = $4
+       RETURNING *`,
+      [status, reviewerComments, adminNotes, paperId],
+    );
+    return result.rows[0] || null;
+  },
+
+  /**
+   * Update registration with paper ID
+   */
+  async linkPaperToRegistration(
+    registrationId: number,
+    paperId: string,
+    paperStatus: string = "pending",
+  ) {
+    const result = await query(
+      `UPDATE registrations
+       SET paper_id = $1, paper_status = $2, updated_at = CURRENT_TIMESTAMP
+       WHERE id = $3
+       RETURNING *`,
+      [paperId, paperStatus, registrationId],
+    );
+    return result.rows[0] || null;
+  },
+
+  /**
+   * Get all paper submissions (admin)
+   */
+  async getAll(filters?: {
+    status?: string;
+    trackType?: string;
+    limit?: number;
+    offset?: number;
+  }) {
+    let queryText = "SELECT * FROM paper_submissions WHERE 1=1";
+    const params: unknown[] = [];
+    let paramCount = 1;
+
+    if (filters?.status) {
+      queryText += ` AND status = $${paramCount}`;
+      params.push(filters.status);
+      paramCount++;
+    }
+
+    if (filters?.trackType) {
+      queryText += ` AND track_type = $${paramCount}`;
+      params.push(filters.trackType);
+      paramCount++;
+    }
+
+    queryText += " ORDER BY submitted_at DESC";
+
+    if (filters?.limit) {
+      queryText += ` LIMIT $${paramCount}`;
+      params.push(filters.limit);
+      paramCount++;
+    }
+
+    if (filters?.offset) {
+      queryText += ` OFFSET $${paramCount}`;
+      params.push(filters.offset);
+    }
+
+    const result = await query(queryText, params);
+    return result.rows;
+  },
+
+  /**
+   * Get paper submission statistics
+   */
+  async getStats() {
+    const result = await query(`
+      SELECT
+        track_type,
+        status,
+        COUNT(*) as count,
+        MIN(submitted_at) as first_submission,
+        MAX(submitted_at) as last_submission
+      FROM paper_submissions
+      GROUP BY track_type, status
+    `);
+
+    return result.rows;
+  },
+
+  /**
+   * Delete paper submission
+   */
+  async delete(paperId: string, uid: string) {
+    const result = await query(
+      "DELETE FROM paper_submissions WHERE paper_id = $1 AND uid = $2 RETURNING *",
+      [paperId, uid],
+    );
+    return result.rows[0] || null;
+  },
+};
+
 // Export pool for advanced usage
 export default pool;

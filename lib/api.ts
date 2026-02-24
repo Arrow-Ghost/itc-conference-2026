@@ -26,6 +26,41 @@ export interface Registration {
   updatedAt?: string;
 }
 
+export interface CoAuthor {
+  name: string;
+  email: string;
+  institution: string;
+}
+
+export interface PaperSubmission {
+  id?: number;
+  paperId: string;
+  registrationId?: number;
+  authorName: string;
+  authorEmail: string;
+  authorPhone: string;
+  authorInstitution: string;
+  authorDepartment: string;
+  coAuthors?: CoAuthor[];
+  paperTitle: string;
+  paperAbstract: string;
+  keywords?: string;
+  paperType?: "full" | "poster" | "extended_abstract";
+  trackType: "cfp" | "art" | "cft";
+  fileUrl?: string;
+  fileName?: string;
+  fileSize?: number;
+  status?:
+    | "pending"
+    | "under_review"
+    | "approved"
+    | "rejected"
+    | "revision_required";
+  reviewerComments?: string;
+  submittedAt?: string;
+  reviewedAt?: string;
+}
+
 export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
@@ -295,5 +330,152 @@ export async function healthCheck(): Promise<boolean> {
   } catch (error) {
     console.error("Health check failed:", error);
     return false;
+  }
+}
+
+/**
+ * Paper Submission API Methods
+ */
+
+/**
+ * Submit a new paper with PDF file
+ */
+export async function submitPaper(
+  paperData: Omit<
+    PaperSubmission,
+    "id" | "paperId" | "fileUrl" | "submittedAt" | "reviewedAt"
+  >,
+  file: File,
+): Promise<ApiResponse<PaperSubmission>> {
+  try {
+    const formData = new FormData();
+
+    // Add all paper fields to form data
+    formData.append("authorName", paperData.authorName);
+    formData.append("authorEmail", paperData.authorEmail);
+    formData.append("authorPhone", paperData.authorPhone);
+    formData.append("authorInstitution", paperData.authorInstitution);
+    formData.append("authorDepartment", paperData.authorDepartment);
+    formData.append("paperTitle", paperData.paperTitle);
+    formData.append("paperAbstract", paperData.paperAbstract);
+    formData.append("trackType", paperData.trackType);
+
+    if (paperData.coAuthors && paperData.coAuthors.length > 0) {
+      formData.append("coAuthors", JSON.stringify(paperData.coAuthors));
+    }
+
+    if (paperData.keywords) {
+      formData.append("keywords", paperData.keywords);
+    }
+
+    if (paperData.paperType) {
+      formData.append("paperType", paperData.paperType);
+    }
+
+    if (paperData.registrationId) {
+      formData.append("registrationId", paperData.registrationId.toString());
+    }
+
+    // Add the PDF file
+    formData.append("file", file);
+
+    const idToken = await getIdToken();
+    if (!idToken) {
+      throw new Error("Not authenticated");
+    }
+
+    const endpoint = USE_LOCAL_API ? "/api/papers" : "/api/v1/papers";
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${idToken}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return {
+        success: false,
+        error: errorData.error || "Failed to submit paper",
+      };
+    }
+
+    const data = await response.json();
+    return {
+      success: true,
+      data: data.data,
+      message: data.message,
+    };
+  } catch (error) {
+    console.error("Error submitting paper:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "An error occurred",
+    };
+  }
+}
+
+/**
+ * Get all paper submissions for current user
+ */
+export async function getMyPapers(): Promise<ApiResponse<PaperSubmission[]>> {
+  try {
+    const endpoint = USE_LOCAL_API ? "/api/papers" : "/api/v1/papers/me";
+    const response = await authenticatedFetch(endpoint);
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return {
+        success: false,
+        error: errorData.error || "Failed to fetch papers",
+      };
+    }
+
+    const data = await response.json();
+    return {
+      success: true,
+      data: data.data,
+    };
+  } catch (error) {
+    console.error("Error fetching papers:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "An error occurred",
+    };
+  }
+}
+
+/**
+ * Get paper submission by paper ID
+ */
+export async function getPaperById(
+  paperId: string,
+): Promise<ApiResponse<PaperSubmission>> {
+  try {
+    const endpoint = USE_LOCAL_API
+      ? `/api/papers/${paperId}`
+      : `/api/v1/papers/${paperId}`;
+    const response = await authenticatedFetch(endpoint);
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return {
+        success: false,
+        error: errorData.error || "Failed to fetch paper",
+      };
+    }
+
+    const data = await response.json();
+    return {
+      success: true,
+      data: data.data,
+    };
+  } catch (error) {
+    console.error("Error fetching paper:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "An error occurred",
+    };
   }
 }
