@@ -124,6 +124,14 @@ export default function DashboardPage() {
               <p className="text-lg">{user?.email || "N/A"}</p>
             </div>
           </div>
+          <div className="mt-6">
+            <button
+              onClick={handleSignOut}
+              className="px-6 py-2 border border-white/20 rounded-full font-medium hover:bg-white/10 transition-colors"
+            >
+              Sign Out
+            </button>
+          </div>
         </div>
 
         {/* Error Message */}
@@ -238,6 +246,18 @@ export default function DashboardPage() {
 
             <div className="flex gap-4 flex-wrap">
               <button
+                onClick={() => router.push("/dashboard/submit-paper")}
+                className="px-6 py-2 bg-yellow-500 text-[#03396c] rounded-full font-medium hover:bg-yellow-400 transition-colors"
+              >
+                📄 Submit Paper
+              </button>
+              <button
+                onClick={() => router.push("/dashboard/papers")}
+                className="px-6 py-2 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-400 transition-colors"
+              >
+                📋 View My Papers
+              </button>
+              <button
                 onClick={() => router.push("/dashboard/edit")}
                 className="px-6 py-2 bg-white text-[#03396c] rounded-full font-medium hover:bg-gray-100 transition-colors"
               >
@@ -275,7 +295,7 @@ export default function DashboardPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <button
                 onClick={() => router.push("/fellowship")}
                 className="p-4 bg-white/5 border border-white/20 rounded-lg hover:bg-white/10 transition-colors"
@@ -300,6 +320,13 @@ export default function DashboardPage() {
                 <p className="text-sm text-gray-300">
                   Submit your research paper
                 </p>
+              </button>
+              <button
+                onClick={() => router.push("/dashboard/submit-paper")}
+                className="p-4 bg-yellow-500/20 border border-yellow-500/50 rounded-lg hover:bg-yellow-500/30 transition-colors"
+              >
+                <h4 className="font-bold mb-2 text-yellow-400">Submit Paper</h4>
+                <p className="text-sm text-gray-300">Upload your paper (PDF)</p>
               </button>
             </div>
           </div>
