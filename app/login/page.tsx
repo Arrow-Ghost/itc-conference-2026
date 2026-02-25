@@ -44,17 +44,15 @@ export default function Login() {
           }}
         />
 
-        {/* Vertical Grid Lines - aligned with design grid */}
         <div className="absolute top-0 right-10 h-full w-[1px] border-r border-white/10 hidden xl:block"></div>
         <div className="absolute top-0 left-10 h-full w-[1px] border-r border-white/10 hidden xl:block"></div>
       </div>
 
       <div className="relative z-10 w-full max-w-[900px] h-auto md:h-[500px] bg-white rounded-[30px] flex flex-col md:flex-row shadow-2xl overflow-hidden">
-        {/* Left Section - Logo */}
         <div className="w-full md:w-1/2 flex items-center justify-center p-8 md:border-r border-dashed border-gray-300 relative">
           <div className="relative w-full max-w-[300px] aspect-square">
             <Image
-              src="/images/itc-earth-logo.png"
+              src="/itc-logo.svg"
               alt="ITC India 10th Edition"
               fill
               className="object-contain"
@@ -63,7 +61,6 @@ export default function Login() {
           </div>
         </div>
 
-        {/* Right Section - Login Form */}
         <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-8 md:p-12 text-center bg-white">
           <h1 className="text-2xl md:text-[28px] font-bold text-black mb-4">
             Get started with Fellowship
@@ -79,13 +76,13 @@ export default function Login() {
             </div>
           )}
 
-          <button
+          {/*<button
             className="w-full max-w-[320px] py-3.5 px-6 rounded-full border border-gray-800 text-black font-medium hover:bg-gray-50 transition-colors mb-4 flex items-center justify-center gap-2 opacity-50 cursor-not-allowed"
             disabled
           >
             Continue with Email
             <span className="text-xs">(Coming Soon)</span>
-          </button>
+          </button>*/}
 
           <button
             className="w-full max-w-[320px] py-3.5 px-6 rounded-full bg-black text-white font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
