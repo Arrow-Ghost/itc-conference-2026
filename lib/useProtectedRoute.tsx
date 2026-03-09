@@ -19,7 +19,6 @@ export function useProtectedRoute(options: UseProtectedRouteOptions = {}) {
     if (loading) return;
 
     if (requiredAuth && !user) {
-      // User is not authenticated, redirect to login
       router.push(redirectTo);
     }
   }, [user, loading, router, redirectTo, requiredAuth]);

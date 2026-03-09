@@ -16,7 +16,7 @@ export default function CountdownTimer({ variant = 'default' }: CountdownTimerPr
   });
 
   useEffect(() => {
-    const targetDate = new Date('2026-07-19T00:00:00').getTime();
+    const targetDate = new Date("2026-07-19T09:00:00").getTime();
 
     const updateTimer = () => {
       const now = Date.now();
@@ -46,56 +46,10 @@ export default function CountdownTimer({ variant = 'default' }: CountdownTimerPr
     return () => clearInterval(interval);
   }, []);
 
-  const segments = [
-    { value: timeLeft.months, label: 'MONTHS' },
-    { value: timeLeft.days, label: 'DAYS' },
-    { value: timeLeft.hours, label: 'HOURS' },
-    { value: timeLeft.minutes, label: 'MINUTES' },
-  ];
-
-  // Desktop: fills zig-zag gap, uses fluid typography so it always fits
-  if (variant === 'desktop') {
-    return (
-      <div
-        className="relative w-full h-full min-w-0 min-h-0 flex items-center justify-center overflow-hidden font-sarpanch text-white"
-        style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 15.5% 100%, 0 0)' }}
-      >
-        <div
-          className="absolute inset-0 -inset-[2px] bg-gradient-to-r from-[#022241] to-[#0557A7]"
-          aria-hidden
-        />
-        <div
-          className="relative z-10 flex items-center justify-center w-full h-full px-2"
-          style={{ gap: 'clamp(20px, 3.5vw, 56px)', maxWidth: '100%' }}
-        >
-          {segments.map(({ value, label }) => (
-            <div
-              key={label}
-              className="flex flex-col items-center justify-center text-center min-w-0 flex-shrink"
-            >
-              <span
-                className="font-bold leading-none"
-                style={{ fontSize: 'clamp(24px, 3.5vw, 68px)' }}
-              >
-                {value}
-              </span>
-              <span
-                className="tracking-wider mt-0.5"
-                style={{ fontSize: 'clamp(6px, 0.8vw, 12px)' }}
-              >
-                {label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  // Compact: for tablet layout (640–949px), fluid typography for better scaling
-  if (variant === 'compact') {
-    return (
-      <div className="relative w-full max-w-full min-w-0 h-[80px] sm:h-[90px] md:h-[100px] flex items-center justify-center overflow-hidden font-sarpanch text-white">
+  return (
+    <div className="relative w-[300px] sm:w-[360px] md:w-[440px] lg:w-[520px] xl:w-[600px] h-[120px] sm:h-[140px] md:h-[160px] lg:h-[180px] xl:h-[200px] flex items-center justify-center font-sarpanch text-white z-30 px-4 sm:px-6 md:px-8">
+      {/* Background Banner with angled ends */}
+      <div className="absolute inset-0 z-0">
         <Image
           src="/images/vector20.svg"
           alt=""
@@ -103,52 +57,42 @@ export default function CountdownTimer({ variant = 'default' }: CountdownTimerPr
           className="object-cover"
           sizes="(max-width: 768px) 180px, 220px"
         />
-        <div
-          className="relative z-10 flex items-center justify-center w-full h-full px-3"
-          style={{ gap: 'clamp(16px, 2.8vw, 36px)' }}
-        >
-          {segments.map(({ value, label }) => (
-            <div
-              key={label}
-              className="flex flex-col items-center justify-center text-center min-w-0 flex-shrink"
-            >
-              <span
-                className="font-bold leading-none"
-                style={{ fontSize: 'clamp(24px, 3.5vw, 44px)' }}
-              >
-                {value}
-              </span>
-              <span
-                className="tracking-wider mt-0.5"
-                style={{ fontSize: 'clamp(6px, 0.9vw, 10px)' }}
-              >
-                {label}
-              </span>
-            </div>
-          ))}
-        </div>
       </div>
-    );
-  }
 
-  // Default: standalone (e.g. for reuse elsewhere)
-  return (
-    <div className="relative w-[140px] sm:w-[180px] md:w-[220px] h-[100px] sm:h-[140px] md:h-[180px] flex items-center justify-center overflow-hidden font-sarpanch text-white">
-      <Image src="/images/vector20.svg" alt="" fill className="object-cover" sizes="220px" />
-      <div className="relative z-10 flex items-center justify-center gap-6 sm:gap-10 w-full h-full px-3">
-        {segments.map(({ value, label }) => (
-          <div
-            key={label}
-            className="flex flex-col items-center justify-center text-center min-w-[40px] sm:min-w-[50px]"
-          >
-            <span className="text-[28px] sm:text-[38px] md:text-[48px] font-bold leading-none">
-              {value}
-            </span>
-            <span className="text-[8px] sm:text-[9px] md:text-[10px] tracking-wider mt-0.5">
-              {label}
-            </span>
-          </div>
-        ))}
+      {/* Timer Content */}
+      <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-10 pb-2 pr-1 sm:pr-2 md:pr-4 xl:pr-">
+        <div className="flex flex-col items-center min-w-[50px] sm:min-w-[60px] md:min-w-[80px]">
+          <span className="text-[24px] leading-[1] sm:text-[28px] md:text-[36px] lg:text-[42px] xl:text-[48px] font-bold">
+            {timeLeft.days}
+          </span>
+          <span className="text-[9px] sm:text-[10px] md:text-[11px] xl:text-[12px] tracking-wider mt-1">
+            DAYS
+          </span>
+        </div>
+        <div className="flex flex-col items-center min-w-[50px] sm:min-w-[60px] md:min-w-[70px]">
+          <span className="text-[24px] leading-[1] sm:text-[28px] md:text-[36px] lg:text-[42px] xl:text-[48px] font-bold">
+            {timeLeft.hours}
+          </span>
+          <span className="text-[9px] sm:text-[10px] md:text-[11px] xl:text-[12px] tracking-wider mt-1">
+            HOURS
+          </span>
+        </div>
+        <div className="flex flex-col items-center min-w-[50px] sm:min-w-[60px] md:min-w-[70px]">
+          <span className="text-[24px] leading-[1] sm:text-[28px] md:text-[36px] lg:text-[42px] xl:text-[48px] font-bold">
+            {timeLeft.minutes}
+          </span>
+          <span className="text-[9px] sm:text-[10px] md:text-[11px] xl:text-[12px] tracking-wider mt-1">
+            MINUTES
+          </span>
+        </div>
+        <div className="flex flex-col items-center min-w-[50px] sm:min-w-[60px] md:min-w-[70px]">
+          <span className="text-[24px] leading-[1] sm:text-[28px] md:text-[36px] lg:text-[42px] xl:text-[48px] font-bold">
+            {timeLeft.seconds}
+          </span>
+          <span className="text-[9px] sm:text-[10px] md:text-[11px] xl:text-[12px] tracking-wider mt-1">
+            SECONDS
+          </span>
+        </div>
       </div>
     </div>
   );

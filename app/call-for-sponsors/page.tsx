@@ -218,14 +218,12 @@ export default function CallForSponsors() {
           </div>
         </section>
 
-        {/* Footer Message */}
         <section className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm text-center">
           <p className="text-gray-200">
             Your prompt decision to participate will enable us to better serve you and enhance the ROI you experience, ensuring that the conference meets and exceeds your expectations. We would be happy to provide further details and look forward to connecting with you soon.
           </p>
         </section>
 
-        {/* Contact CTA */}
         <div className="mt-10 text-center">
           <a
             href="mailto:sponsors@itctestweekindia.org"

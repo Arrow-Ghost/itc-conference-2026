@@ -1,22 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useProtectedRoute } from "@/lib/useProtectedRoute";
-import {
-  getMyRegistration,
-  createRegistration,
-  updateMyRegistration,
-  Registration,
-} from "@/lib/api";
-
-import Image from "next/image";
+import { RegistrationDB, Registration } from "@/lib/firestore";
 
 export default function FellowshipApplication() {
   const { user, loading: authLoading } = useProtectedRoute({
     redirectTo: "/login",
   });
-  const router = useRouter();
 
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -38,51 +29,58 @@ export default function FellowshipApplication() {
   });
 
   useEffect(() => {
+    const loadRegistration = async () => {
+      if (!user) return;
+
+      try {
+        setLoading(true);
+        // Use Firestore directly instead of API
+        const result = await RegistrationDB.findByUidAndType(
+          user.uid,
+          "fellowship",
+        );
+
+        if (result) {
+          const data = result as Registration;
+          setRegistration(data);
+          setFormData({
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            institution: data.institution,
+            city: data.city || "",
+            state: data.state || "",
+            department: data.department,
+            year: data.year,
+            additionalInfo: data.additionalInfo || "",
+          });
+        } else {
+          // No registration found, prefill with user data
+          setFormData({
+            name: user.displayName || "",
+            email: user.email || "",
+            phone: "",
+            institution: "",
+            city: "",
+            state: "",
+            department: "",
+            year: "",
+            additionalInfo: "",
+          });
+          setIsEditing(true);
+        }
+      } catch (err) {
+        console.error("Error loading registration:", err);
+        setError("Failed to load your application. Please try refreshing.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
     if (!authLoading && user) {
       loadRegistration();
     }
   }, [authLoading, user]);
-
-  const loadRegistration = async () => {
-    try {
-      setLoading(true);
-      const result = await getMyRegistration();
-
-      if (result.success && result.data) {
-        setRegistration(result.data);
-        const data = result.data as Registration;
-        setFormData({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          institution: data.institution,
-          city: data.city || "",
-          state: data.state || "",
-          department: data.department,
-          year: data.year,
-          additionalInfo: data.additionalInfo || "",
-        });
-      } else {
-        // No registration found, prefill with user data
-        setFormData({
-          name: user?.displayName || "",
-          email: user?.email || "",
-          phone: "",
-          institution: "",
-          city: "",
-          state: "",
-          department: "",
-          year: "",
-          additionalInfo: "",
-        });
-        setIsEditing(true);
-      }
-    } catch (err) {
-      console.error("Error loading registration:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -98,6 +96,8 @@ export default function FellowshipApplication() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!user) return;
+
     setError(null);
     setSubmitting(true);
 
@@ -110,27 +110,29 @@ export default function FellowshipApplication() {
 
     try {
       let result;
-      if (registration) {
+      if (registration && registration.id) {
         // Update existing registration
-        result = await updateMyRegistration({
-          ...formData,
-          registrationType: "fellowship",
-        });
+        result = await RegistrationDB.update(
+          registration.id,
+          user.uid,
+          formData,
+        );
       } else {
         // Create new registration
-        result = await createRegistration({
+        result = await RegistrationDB.create({
+          uid: user.uid,
           ...formData,
           registrationType: "fellowship",
         });
       }
 
-      if (result.success) {
+      if (result) {
         setSuccess(true);
-        setRegistration(result.data || null);
+        setRegistration(result as Registration);
         setIsEditing(false);
         setTimeout(() => setSuccess(false), 3000);
       } else {
-        setError(result.error || "Failed to save registration");
+        setError("Failed to save registration");
       }
     } catch (err) {
       console.error("Registration error:", err);
@@ -142,8 +144,8 @@ export default function FellowshipApplication() {
 
   if (authLoading || loading) {
     return (
-      <main className="min-h-screen bg-[#03396c] text-white flex items-center justify-center">
-        <div className="text-center">
+      <main className="min-h-screen bg-[#03396c] flex items-center justify-center">
+        <div className="text-center text-white">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
           <p>Loading your application...</p>
         </div>
@@ -152,490 +154,336 @@ export default function FellowshipApplication() {
   }
 
   return (
-    <main className="min-h-screen bg-[#03396c] text-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div
-          className="absolute inset-0 opacity-10 bg-repeat"
-          style={{
-            backgroundImage: `url('/images/homepage-bg.png')`,
-            backgroundSize: "80px 80px",
-          }}
-        />
-        {/* Vertical Grid Lines */}
-        <div className="absolute top-0 right-10 h-full w-[1px] border-r border-white/10 hidden xl:block"></div>
-        <div className="absolute top-0 left-10 h-full w-[1px] border-r border-white/10 hidden xl:block"></div>
-      </div>
-
-      {/* Decorative Circuit Schematic */}
-      <div className="absolute top-20 right-0 w-[40%] h-[400px] z-0 pointer-events-none hidden lg:block opacity-20">
-        <div className="relative w-full h-full">
-          <Image
-            src="/images/fellowship-schematic.png"
-            alt="Circuit"
-            fill
-            className="object-contain object-right-top"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
-          />
-        </div>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 py-8 md:py-12 max-w-6xl">
-        {/* Header */}
-        <div className="mb-8 mt-24 md:mt-32">
-          <h1 className="text-3xl md:text-5xl font-bold mb-2 uppercase">
-            Fellowship Application
-          </h1>
-          <p className="text-gray-300">Welcome, {user?.displayName}</p>
-        </div>
-
-        {/* Success Message */}
-        {success && (
-          <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg">
-            <p className="text-green-200">
-              ✓ Your fellowship application has been saved successfully!
-            </p>
-          </div>
-        )}
-
-        {/* Error Message */}
-        {error && (
-          <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
-            <p className="text-red-200">{error}</p>
-          </div>
-        )}
-
-        {/* Main Content */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 overflow-hidden">
-          {/* Form Header */}
-          <div className="bg-white/5 border-b border-white/20 p-4 md:p-6 flex justify-between items-center flex-wrap gap-4">
-            <div>
-              <h2 className="text-xl md:text-2xl font-bold">
-                {registration
-                  ? "Your Fellowship Details"
-                  : "Fellowship Registration Form"}
-              </h2>
-              <p className="text-sm text-gray-300 mt-1">
-                {registration
-                  ? "Review your fellowship application details"
-                  : "Complete the form below to apply for the fellowship"}
-              </p>
+    <main className="min-h-screen bg-[#03396c] flex items-center justify-center px-4 py-16">
+      <div className="w-full max-w-2xl">
+        {registration && !isEditing ? (
+          <div className="bg-white rounded-2xl shadow-2xl p-8">
+            {/* Header */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className="flex-shrink-0 bg-green-50 rounded-full p-2">
+                <svg
+                  className="w-7 h-7 text-green-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Already Registered
+                </h2>
+                <p className="text-gray-500 text-sm mt-0.5">
+                  You have already submitted a{" "}
+                  <span className="font-semibold capitalize">Fellowship</span>{" "}
+                  registration.
+                </p>
+              </div>
             </div>
-            {registration && !isEditing && (
+
+            {/* Status badge */}
+            <div className="mb-5">
+              <span
+                className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${
+                  registration.status === "approved"
+                    ? "bg-green-100 text-green-700 border-green-200"
+                    : registration.status === "rejected"
+                      ? "bg-red-100 text-red-700 border-red-200"
+                      : "bg-yellow-100 text-yellow-700 border-yellow-200"
+                }`}
+              >
+                Status:{" "}
+                {registration.status === "approved"
+                  ? "Approved"
+                  : registration.status === "rejected"
+                    ? "Rejected"
+                    : "Pending Review"}
+              </span>
+            </div>
+
+            {/* Details table */}
+            <div className="divide-y divide-gray-100 border border-gray-100 rounded-xl overflow-hidden mb-6">
+              {[
+                { label: "Full Name", value: registration.name },
+                { label: "Email", value: registration.email },
+                { label: "Phone", value: registration.phone },
+                { label: "Institution", value: registration.institution },
+                { label: "Department", value: registration.department },
+                { label: "Year of Study", value: registration.year },
+                ...(registration.additionalInfo
+                  ? [
+                      {
+                        label: "Additional Info",
+                        value: registration.additionalInfo,
+                      },
+                    ]
+                  : []),
+              ].map(({ label, value }) => (
+                <div
+                  key={label}
+                  className="flex flex-col sm:flex-row sm:items-center px-5 py-3 odd:bg-gray-50 even:bg-white"
+                >
+                  <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider w-40 shrink-0 mb-1 sm:mb-0">
+                    {label}
+                  </span>
+                  <span className="text-gray-800 text-sm">{value || "—"}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => setIsEditing(true)}
-                className="px-4 py-2 bg-white text-[#03396c] rounded-full font-medium hover:bg-gray-100 transition-colors text-sm md:text-base"
+                className="flex-1 bg-black text-white py-3 px-6 rounded-full font-medium hover:bg-gray-800 transition-colors text-sm"
               >
-                Edit Details
+                Edit Application
               </button>
-            )}
+              <button
+                onClick={() => window.history.back()}
+                className="flex-1 bg-white text-black border border-gray-300 py-3 px-6 rounded-full font-medium hover:bg-gray-50 transition-colors text-sm"
+              >
+                Go Back
+              </button>
+            </div>
           </div>
+        ) : (
+          <div className="bg-white rounded-2xl shadow-2xl p-8">
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-1">
+                {registration ? "Edit Application" : "Fellowship Application"}
+              </h2>
+              <p className="text-gray-500 text-sm">
+                Please fill out the details below to apply for the fellowship.
+              </p>
+            </div>
 
-          {/* Form/Details View */}
-          <div className="p-4 md:p-8">
-            {!isEditing && registration ? (
-              // Display Mode
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-6">
-                  <div>
-                    <label className="text-sm text-gray-300 block mb-1">
-                      Full Name
-                    </label>
-                    <p className="text-lg">{registration.name}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm text-gray-300 block mb-1">
-                      Email Address
-                    </label>
-                    <p className="text-lg">{registration.email}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm text-gray-300 block mb-1">
-                      Phone Number
-                    </label>
-                    <p className="text-lg">{registration.phone}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm text-gray-300 block mb-1">
-                      Institution
-                    </label>
-                    <p className="text-lg">{registration.institution}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm text-gray-300 block mb-1">
-                      City
-                    </label>
-                    <p className="text-lg">{registration.city || "N/A"}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm text-gray-300 block mb-1">
-                      State
-                    </label>
-                    <p className="text-lg">{registration.state || "N/A"}</p>
-                  </div>
-                </div>
-                <div className="space-y-6">
-                  <div>
-                    <label className="text-sm text-gray-300 block mb-1">
-                      Department
-                    </label>
-                    <p className="text-lg">{registration.department}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm text-gray-300 block mb-1">
-                      Year of Study
-                    </label>
-                    <p className="text-lg capitalize">{registration.year}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm text-gray-300 block mb-1">
-                      Registration Status
-                    </label>
-                    <span className="inline-block px-3 py-1 bg-green-500/20 border border-green-500/50 rounded-full text-sm text-green-200">
-                      Registered
-                    </span>
-                  </div>
-                  <div>
-                    <label className="text-sm text-gray-300 block mb-1">
-                      Registered On
-                    </label>
-                    <p className="text-lg">
-                      {registration.createdAt
-                        ? new Date(registration.createdAt).toLocaleDateString(
-                            "en-US",
-                            {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            },
-                          )
-                        : "N/A"}
-                    </p>
-                  </div>
-                </div>
-                {registration.additionalInfo && (
-                  <div className="md:col-span-2">
-                    <label className="text-sm text-gray-300 block mb-1">
-                      Additional Information
-                    </label>
-                    <p className="text-lg">{registration.additionalInfo}</p>
-                  </div>
-                )}
+            {error && (
+              <div className="mb-5 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">
+                {error}
               </div>
-            ) : (
-              // Edit/Create Mode
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Name */}
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
-                      placeholder="Enter your full name"
-                    />
-                  </div>
+            )}
 
-                  {/* Email */}
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Institutional Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
-                      placeholder="your.name@university.edu"
-                    />
-                    <p className="mt-1 text-xs text-gray-400">
-                      Use your institutional email address
-                    </p>
-                  </div>
+            {success && (
+              <div className="mb-5 p-4 bg-green-50 border border-green-200 rounded-xl text-green-600 text-sm">
+                Application saved successfully!
+              </div>
+            )}
 
-                  {/* Phone */}
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
-                      placeholder="+91-9876543210"
-                    />
-                  </div>
-
-                  {/* Institution */}
-                  <div>
-                    <label
-                      htmlFor="institution"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Institution/University *
-                    </label>
-                    <input
-                      type="text"
-                      id="institution"
-                      name="institution"
-                      value={formData.institution}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
-                      placeholder="Your institution name"
-                    />
-                  </div>
-
-                  {/* City */}
-                  <div>
-                    <label
-                      htmlFor="city"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      City *
-                    </label>
-                    <input
-                      type="text"
-                      id="city"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
-                      placeholder="Your city"
-                    />
-                  </div>
-
-                  {/* State */}
-                  <div>
-                    <label
-                      htmlFor="state"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      State *
-                    </label>
-                    <input
-                      type="text"
-                      id="state"
-                      name="state"
-                      value={formData.state}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
-                      placeholder="Your state"
-                    />
-                  </div>
-
-                  {/* Department */}
-                  <div>
-                    <label
-                      htmlFor="department"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Department/Field *
-                    </label>
-                    <input
-                      type="text"
-                      id="department"
-                      name="department"
-                      value={formData.department}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
-                      placeholder="Computer Science, ECE, etc."
-                    />
-                  </div>
-
-                  {/* Year */}
-                  <div>
-                    <label
-                      htmlFor="year"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Year of Study *
-                    </label>
-                    <select
-                      id="year"
-                      name="year"
-                      value={formData.year}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white/50"
-                    >
-                      <option value="" className="bg-[#03396c]">
-                        Select year
-                      </option>
-                      <option value="1" className="bg-[#03396c]">
-                        1st Year
-                      </option>
-                      <option value="2" className="bg-[#03396c]">
-                        2nd Year
-                      </option>
-                      <option value="3" className="bg-[#03396c]">
-                        3rd Year
-                      </option>
-                      <option value="4" className="bg-[#03396c]">
-                        4th Year
-                      </option>
-                      <option value="masters" className="bg-[#03396c]">
-                        Master&apos;s
-                      </option>
-                      <option value="phd" className="bg-[#03396c]">
-                        Ph.D.
-                      </option>
-                      <option value="postdoc" className="bg-[#03396c]">
-                        Post-Doctoral
-                      </option>
-                      <option value="faculty" className="bg-[#03396c]">
-                        Faculty
-                      </option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Additional Info */}
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label
-                    htmlFor="additionalInfo"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Additional Information (Optional)
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Full Name *
                   </label>
-                  <textarea
-                    id="additionalInfo"
-                    name="additionalInfo"
-                    value={formData.additionalInfo}
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
-                    placeholder="Any additional information you'd like to share..."
+                    required
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
+                    placeholder="John Doe"
                   />
                 </div>
-
-                {/* Buttons */}
-                <div className="flex gap-4 flex-wrap pt-4">
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="px-6 py-3 bg-white text-[#03396c] rounded-full font-medium hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                  >
-                    {submitting ? (
-                      <>
-                        <svg
-                          className="animate-spin h-5 w-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Saving...
-                      </>
-                    ) : (
-                      <>
-                        {registration
-                          ? "Update Application"
-                          : "Submit Application"}
-                      </>
-                    )}
-                  </button>
-                  {registration && isEditing && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setIsEditing(false);
-                        setFormData({
-                          name: registration.name,
-                          email: registration.email,
-                          phone: registration.phone,
-                          institution: registration.institution,
-                          city: registration.city || "",
-                          state: registration.state || "",
-                          department: registration.department,
-                          year: registration.year,
-                          additionalInfo: registration.additionalInfo || "",
-                        });
-                      }}
-                      className="px-6 py-3 border border-white/50 rounded-full font-medium hover:bg-white/10 transition-colors"
-                    >
-                      Cancel
-                    </button>
-                  )}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
+                    placeholder="john@university.edu"
+                  />
+                  <p className="mt-1 text-xs text-gray-400">
+                    Use your institutional email (.edu or .ac.*)
+                  </p>
                 </div>
-              </form>
-            )}
-          </div>
-        </div>
+              </div>
 
-        {/* Fellowship Info Section */}
-        <div className="mt-8 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-6 md:p-8">
-          <h3 className="text-2xl font-bold mb-4 uppercase">
-            About the Fellowship
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm md:text-base">
-            <div>
-              <h4 className="font-bold mb-2 text-lg">
-                Support for Local Fellows
-              </h4>
-              <ul className="space-y-2 text-gray-200">
-                <li>• Free conference registration</li>
-                <li>• Access to all technical sessions</li>
-                <li>• Networking opportunities</li>
-                <li>• Workshops and tutorials</li>
-                <li>• Certificate of participation</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-2 text-lg">
-                Support for Outstation Fellows
-              </h4>
-              <ul className="space-y-2 text-gray-200">
-                <li>• All local fellow benefits</li>
-                <li>• Travel allowance (as per policy)</li>
-                <li>• Accommodation support</li>
-                <li>• Meal vouchers</li>
-                <li>• Local transportation</li>
-              </ul>
-            </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
+                    placeholder="+91 98765 43210"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Institution / University *
+                  </label>
+                  <input
+                    type="text"
+                    name="institution"
+                    value={formData.institution}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
+                    placeholder="University Name"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    City
+                  </label>
+                  <input
+                    type="text"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
+                    placeholder="City"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    State / Province
+                  </label>
+                  <input
+                    type="text"
+                    name="state"
+                    value={formData.state}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
+                    placeholder="State"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Department / Major *
+                  </label>
+                  <input
+                    type="text"
+                    name="department"
+                    value={formData.department}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
+                    placeholder="Computer Science"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Year of Study *
+                  </label>
+                  <select
+                    name="year"
+                    value={formData.year}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
+                  >
+                    <option value="" disabled>
+                      Select Year
+                    </option>
+                    <option value="Undergraduate - 1st Year">
+                      Undergraduate - 1st Year
+                    </option>
+                    <option value="Undergraduate - 2nd Year">
+                      Undergraduate - 2nd Year
+                    </option>
+                    <option value="Undergraduate - 3rd Year">
+                      Undergraduate - 3rd Year
+                    </option>
+                    <option value="Undergraduate - 4th Year">
+                      Undergraduate - 4th Year
+                    </option>
+                    <option value="Master's Student">
+                      Master&apos;s Student
+                    </option>
+                    <option value="PhD Student">PhD Student</option>
+                    <option value="Postdoc">Postdoc</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  Why are you interested in this fellowship? (Optional)
+                </label>
+                <textarea
+                  name="additionalInfo"
+                  value={formData.additionalInfo}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm resize-none"
+                  placeholder="Tell us about your research interests..."
+                />
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="flex-1 bg-black text-white py-3 px-6 rounded-full font-medium hover:bg-gray-800 transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {submitting ? (
+                    <>
+                      <svg
+                        className="animate-spin h-4 w-4 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        />
+                      </svg>
+                      Submitting...
+                    </>
+                  ) : (
+                    "Submit Application"
+                  )}
+                </button>
+                {isEditing && registration && (
+                  <button
+                    type="button"
+                    onClick={() => setIsEditing(false)}
+                    className="flex-1 bg-white text-black border border-gray-300 py-3 px-6 rounded-full font-medium hover:bg-gray-50 transition-colors text-sm"
+                  >
+                    Cancel
+                  </button>
+                )}
+              </div>
+            </form>
           </div>
-        </div>
+        )}
       </div>
     </main>
   );
