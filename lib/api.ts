@@ -1,11 +1,8 @@
-// API service for backend communication
 import { getIdToken } from "./auth";
 
-// Use local Next.js API routes if available, otherwise use Go backend
-const USE_LOCAL_API = process.env.NEXT_PUBLIC_USE_LOCAL_API === "true";
-const API_BASE_URL = USE_LOCAL_API
-  ? "" // Empty string means same origin (Next.js API routes)
-  : process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8080";
+// Use Go backend at port 8080
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8080";
 
 export interface Registration {
   id?: string;
@@ -106,9 +103,7 @@ export async function createRegistration(
   registration: Omit<Registration, "id" | "userId" | "createdAt" | "updatedAt">,
 ): Promise<ApiResponse<Registration>> {
   try {
-    const endpoint = USE_LOCAL_API
-      ? "/api/registrations"
-      : "/api/v1/registrations";
+    const endpoint = "/api/v1/registrations";
     const response = await authenticatedFetch(endpoint, {
       method: "POST",
       body: JSON.stringify(registration),
@@ -141,9 +136,7 @@ export async function createRegistration(
  */
 export async function getMyRegistration(): Promise<ApiResponse<Registration>> {
   try {
-    const endpoint = USE_LOCAL_API
-      ? "/api/registrations"
-      : "/api/v1/registrations/me";
+    const endpoint = "/api/v1/registrations/me";
     const response = await authenticatedFetch(endpoint);
 
     if (!response.ok) {
@@ -183,9 +176,7 @@ export async function updateMyRegistration(
   >,
 ): Promise<ApiResponse<Registration>> {
   try {
-    const endpoint = USE_LOCAL_API
-      ? "/api/registrations"
-      : "/api/v1/registrations/me";
+    const endpoint = "/api/v1/registrations/me";
     const response = await authenticatedFetch(endpoint, {
       method: "PUT",
       body: JSON.stringify(registration),
@@ -218,9 +209,7 @@ export async function updateMyRegistration(
  */
 export async function deleteMyRegistration(): Promise<ApiResponse<void>> {
   try {
-    const endpoint = USE_LOCAL_API
-      ? "/api/registrations"
-      : "/api/v1/registrations/me";
+    const endpoint = "/api/v1/registrations/me";
     const response = await authenticatedFetch(endpoint, {
       method: "DELETE",
     });
@@ -257,9 +246,7 @@ export async function getAllRegistrations(): Promise<
   ApiResponse<Registration[]>
 > {
   try {
-    const endpoint = USE_LOCAL_API
-      ? "/api/admin/registrations"
-      : "/api/v1/admin/registrations";
+    const endpoint = "/api/v1/admin/registrations";
     const response = await authenticatedFetch(endpoint);
 
     if (!response.ok) {
@@ -295,7 +282,7 @@ export async function getCurrentUser(): Promise<
   ApiResponse<Record<string, unknown>>
 > {
   try {
-    const endpoint = USE_LOCAL_API ? "/api/me" : "/api/v1/me";
+    const endpoint = "/api/v1/me";
     const response = await authenticatedFetch(endpoint);
 
     if (!response.ok) {
@@ -421,7 +408,7 @@ export async function submitPaper(
  */
 export async function getMyPapers(): Promise<ApiResponse<PaperSubmission[]>> {
   try {
-    const endpoint = USE_LOCAL_API ? "/api/papers" : "/api/v1/papers/me";
+    const endpoint = "/api/v1/papers/me";
     const response = await authenticatedFetch(endpoint);
 
     if (!response.ok) {
@@ -453,9 +440,7 @@ export async function getPaperById(
   paperId: string,
 ): Promise<ApiResponse<PaperSubmission>> {
   try {
-    const endpoint = USE_LOCAL_API
-      ? `/api/papers/${paperId}`
-      : `/api/v1/papers/${paperId}`;
+    const endpoint = `/api/v1/papers/${paperId}`;
     const response = await authenticatedFetch(endpoint);
 
     if (!response.ok) {

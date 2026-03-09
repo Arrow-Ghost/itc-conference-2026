@@ -51,20 +51,15 @@ function validateFirebaseConfig() {
     );
   }
 
-  // Validate that values are not placeholders
   const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
   if (apiKey && (apiKey.includes("your-") || apiKey === "your-api-key-here")) {
     console.error("❌ Firebase configuration error!");
-    console.error("Your .env.local still contains placeholder values!");
-    console.error("Please replace them with real Firebase credentials.");
-    console.error("\nSee CREDENTIALS_CONFIGURED.md for instructions.\n");
     throw new Error(
-      "Firebase credentials contain placeholder values. Please update .env.local file.",
+      "Please update .env.local file.",
     );
   }
 }
 
-// Validate config before initializing (only in browser)
 if (typeof window !== "undefined") {
   validateFirebaseConfig();
 }
