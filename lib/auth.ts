@@ -29,9 +29,15 @@ export interface AuthResponse {
  * Sign in with Google using Firebase Auth
  */
 export async function signInWithGoogle(): Promise<AuthResponse> {
+  if (!auth) {
+    return {
+      success: false,
+      error: "Firebase is not configured. Sign-in is unavailable.",
+    };
+  }
+
   try {
     const provider = new GoogleAuthProvider();
-    // Force account selection
     provider.setCustomParameters({
       prompt: "select_account",
     });
@@ -39,10 +45,8 @@ export async function signInWithGoogle(): Promise<AuthResponse> {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
 
-    // Get the ID token
     const idToken = await user.getIdToken();
 
-    // Send token to backend for verification
     const response = await fetch(`${API_BASE_URL}/api/v1/auth/google`, {
       method: "POST",
       headers: {
@@ -84,10 +88,11 @@ export async function signInWithGoogle(): Promise<AuthResponse> {
  * Sign out the current user
  */
 export async function signOut(): Promise<void> {
+  if (!auth) return;
+
   try {
     await firebaseSignOut(auth);
 
-    // Optionally notify backend about logout
     const user = auth.currentUser;
     if (user) {
       const idToken = await user.getIdToken();
@@ -109,6 +114,8 @@ export async function signOut(): Promise<void> {
  * Get the current user's ID token
  */
 export async function getIdToken(): Promise<string | null> {
+  if (!auth) return null;
+
   const user = auth.currentUser;
   if (!user) return null;
 
@@ -149,6 +156,10 @@ export async function verifyToken(): Promise<boolean> {
 export function onAuthStateChange(
   callback: (user: User | null) => void,
 ): () => void {
+  if (!auth) {
+    callback(null);
+    return () => {};
+  }
   return onAuthStateChanged(auth, callback);
 }
 
@@ -156,6 +167,7 @@ export function onAuthStateChange(
  * Get the current authenticated user
  */
 export function getCurrentUser(): User | null {
+  if (!auth) return null;
   return auth.currentUser;
 }
 
