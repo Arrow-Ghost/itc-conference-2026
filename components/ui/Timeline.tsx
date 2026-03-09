@@ -48,7 +48,7 @@ export default function Timeline() {
   return (
     <section
       id="timeline"
-      className="relative w-full flex flex-col items-center mt-0 sm:mt-0 pt-8 sm:pt-20 md:pt-24 lg:pt-30 xl:pt-[180px] mb-0 px-[5%] sm:px-4 md:px-6 lg:px-8 overflow-x-hidden"
+      className={`relative w-full flex flex-col pt-8 sm:pt-10 md:pt-12 lg:pt-14 xl:pt-16 pb-8 sm:pb-10 md:pb-12 overflow-x-hidden ${contentPadding}`}
     >
       <div className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[110px] xl:h-[123px] pointer-events-none -z-10 opacity-60 sm:opacity-70 md:opacity-80">
         <Image

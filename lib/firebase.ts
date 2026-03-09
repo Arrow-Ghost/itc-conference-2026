@@ -1,4 +1,4 @@
-// Firebase configuration and initialization
+// Firebase configuration and initialization - optional when keys are missing/invalid
 import { initializeApp, getApps, FirebaseApp } from "firebase/app";
 import { getAuth, Auth } from "firebase/auth";
 import { getStorage, FirebaseStorage } from "firebase/storage";
@@ -12,12 +12,10 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Validate Firebase configuration
-function validateFirebaseConfig() {
-  const missingKeys: string[] = [];
-
-  if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
-    missingKeys.push("NEXT_PUBLIC_FIREBASE_API_KEY");
+function hasValidConfig(): boolean {
+  const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
+  if (!apiKey || apiKey.includes("your-") || apiKey === "your-api-key-here") {
+    return false;
   }
   if (!process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN) {
     missingKeys.push("NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN");

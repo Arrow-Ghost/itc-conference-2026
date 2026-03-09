@@ -89,19 +89,32 @@ export default function Testimonials() {
                   </p>
                 </div>
 
-                <div className="absolute right-3 sm:right-4 md:right-6 xl:right-8 top-1/2 -translate-y-1/2 w-[20px] sm:w-[24px] md:w-[28px] xl:w-[30px] h-[15px] sm:h-[18px] md:h-[20px] xl:h-[22px]">
-                  <Image
-                    src="/images/vector.svg"
-                    alt="Quote"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-
-                <div className="font-poppins text-[14px] sm:text-[16px] md:text-[18px] xl:text-[24px] text-black mt-6 sm:mt-8">
+                <div className="relative font-poppins text-[14px] sm:text-[16px] md:text-[18px] xl:text-[24px] text-black mt-6 sm:mt-8 pl-7 sm:pl-8 md:pl-9 pr-8 sm:pr-9 md:pr-10">
+                  {/* Opening quote " - at start of first line */}
+                  <div className="absolute left-0 top-0 w-[16px] sm:w-[18px] md:w-[20px] xl:w-[24px] h-[12px] sm:h-[14px] md:h-[16px] xl:h-[18px]">
+                    <Image
+                      src="/images/vector.svg"
+                      alt=""
+                      fill
+                      className="object-contain object-top"
+                      aria-hidden
+                    />
+                  </div>
                   <p>loremjhebgjhdsbkjdvkjdkvhbjdhj</p>
                   <p>hesbdjcsudyub</p>
-                  <p>sdbjhbdjhyvhsd</p>
+                  <p className="flex items-baseline gap-4">
+                    <span>sdbjhbdjhyvhsd</span>
+                    {/* Closing quote " - inline at end of last line */}
+                    <span className="inline-flex shrink-0 w-[16px] sm:w-[18px] md:w-[20px] xl:w-[24px] h-[12px] sm:h-[14px] md:h-[16px] xl:h-[18px] relative">
+                      <Image
+                        src="/images/vector-open.svg"
+                        alt=""
+                        fill
+                        className="object-contain object-bottom"
+                        aria-hidden
+                      />
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
