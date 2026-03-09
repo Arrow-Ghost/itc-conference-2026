@@ -1,65 +1,65 @@
 @import "tailwindcss";
 
 :root {
-  --background: #03396c;
-  --foreground: #ffffff;
+    --background: #03396c;
+    --foreground: #ffffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-space-grotesk: var(--font-space-grotesk);
-  --font-urbanist: var(--font-urbanist);
-  --font-poppins: var(--font-poppins);
-  --font-roboto-slab: var(--font-roboto-slab);
-  --font-angkor: var(--font-angkor);
-  --font-inter: var(--font-inter);
-  --font-sarpanch: var(--font-sarpanch);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-space-grotesk: var(--font-space-grotesk);
+    --font-urbanist: var(--font-urbanist);
+    --font-poppins: var(--font-poppins);
+    --font-roboto-slab: var(--font-roboto-slab);
+    --font-angkor: var(--font-angkor);
+    --font-inter: var(--font-inter);
+    --font-sarpanch: var(--font-sarpanch);
 }
 
 html {
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 body {
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-  position: relative;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }
 
 .font-space-grotesk {
-  font-family: var(--font-space-grotesk), sans-serif;
+    font-family: var(--font-space-grotesk), sans-serif;
 }
 
 .font-urbanist {
-  font-family: var(--font-urbanist), sans-serif;
+    font-family: var(--font-urbanist), sans-serif;
 }
 
 .font-poppins {
-  font-family: var(--font-poppins), sans-serif;
+    font-family: var(--font-poppins), sans-serif;
 }
 
 .font-roboto-slab {
-  font-family: var(--font-roboto-slab), serif;
+    font-family: var(--font-roboto-slab), serif;
 }
 
 .font-angkor {
-  font-family: var(--font-angkor), serif;
+    font-family: var(--font-angkor), serif;
 }
 
 .font-inter {
-  font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-inter), sans-serif;
 }
 
 /* ============================================
@@ -68,253 +68,295 @@ body {
 
 /* Base Mobile Styles (up to 640px) */
 @media (max-width: 640px) {
-  body {
-    font-size: 14px;
-    line-height: 1.5;
-  }
+    body {
+        font-size: 14px;
+        line-height: 1.5;
+    }
 
-  /* Improve touch targets */
-  button, a, input, select, textarea {
-    min-height: 44px;
-    min-width: 44px;
-  }
+    /* Improve touch targets */
+    button,
+    a,
+    input,
+    select,
+    textarea {
+        min-height: 44px;
+        min-width: 44px;
+    }
 
-  /* Better spacing for mobile - removed to allow component-specific padding */
+    /* Better spacing for mobile - removed to allow component-specific padding */
 
-  /* Optimize images for mobile */
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+    /* Optimize images for mobile */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
 
-  /* Prevent horizontal scroll - more targeted approach */
-  img, svg, video, iframe {
-    max-width: 100%;
-    height: auto;
-  }
+    /* Prevent horizontal scroll - more targeted approach */
+    img,
+    svg,
+    video,
+    iframe {
+        max-width: 100%;
+        height: auto;
+    }
 
-  /* Better text readability */
-  p, span, div {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
+    /* Better text readability */
+    p,
+    span,
+    div {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
 
-  /* Prevent text from being too small */
-  * {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-  }
+    /* Prevent text from being too small */
+    * {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
 
-  /* Hero Section Mobile Refinements */
-  .hero-section {
-    /* Ensure Hero content respects side lines on mobile */
-  }
+    /* Hero Section Mobile Refinements */
+    .hero-section {
+        /* Ensure Hero content respects side lines on mobile */
+    }
 
-  /* Hero title text size reduction on mobile */
-  .hero-title {
-    font-size: 28px !important;
-    line-height: 1.1 !important;
-  }
+    /* Hero title text size reduction on mobile */
+    .hero-title {
+        font-size: 28px !important;
+        line-height: 1.1 !important;
+    }
 
-  /* Hero subtitle text size reduction on mobile */
-  .hero-subtitle {
-    font-size: 12px !important;
-    line-height: 1.3 !important;
-  }
+    /* Hero subtitle text size reduction on mobile */
+    .hero-subtitle {
+        font-size: 12px !important;
+        line-height: 1.3 !important;
+    }
 
-  /* Hide testimonial dot indicators on mobile */
-  .testimonial-dots {
-    display: none !important;
-  }
+    /* Hide testimonial dot indicators on mobile */
+    .testimonial-dots {
+        display: none !important;
+    }
 
-  /* Mobile content wrapper - keep ALL content inside side lines (5% each side) */
-  .mobile-content-bound {
-    width: 90% !important;
-    max-width: 90vw !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    box-sizing: border-box !important;
-  }
+    /* Mobile content wrapper - keep ALL content inside side lines (5% each side) */
+    .mobile-content-bound {
+        width: 90% !important;
+        max-width: 90vw !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
+    }
 
-  .mobile-content-bound * {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
+    .mobile-content-bound * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
 
-  /* Ensure all sections on mobile respect boundaries */
-  section {
-    overflow-x: hidden !important;
-  }
+    /* Ensure all sections on mobile respect boundaries */
+    section {
+        overflow-x: hidden !important;
+    }
 
-  /* Ensure images and media don't overflow */
-  img, svg, video, iframe, canvas {
-    max-width: 100% !important;
-    height: auto;
-  }
+    /* Ensure images and media don't overflow */
+    img,
+    svg,
+    video,
+    iframe,
+    canvas {
+        max-width: 100% !important;
+        height: auto;
+    }
 
-  /* Ensure content elements use box-sizing */
-  div, p, span, h1, h2, h3, h4, h5, h6, input, button, form {
-    box-sizing: border-box;
-  }
+    /* Ensure content elements use box-sizing */
+    div,
+    p,
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    input,
+    button,
+    form {
+        box-sizing: border-box;
+    }
 
-  /* FAQ Section - Ensure content stays within boundaries on mobile */
-  .faq-section {
-    overflow-x: hidden !important;
-  }
+    /* FAQ Section - Ensure content stays within boundaries on mobile */
+    .faq-section {
+        overflow-x: hidden !important;
+    }
 
-  .faq-section * {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
+    .faq-section * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
 
-  .faq-section input,
-  .faq-section button {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
+    .faq-section input,
+    .faq-section button {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
 }
 
 /* Very Small Mobile (up to 360px) */
 @media (max-width: 360px) {
-  body {
-    font-size: 12px;
-  }
+    body {
+        font-size: 12px;
+    }
 
-  /* Ensure touch targets are still accessible */
-  button, a, input, select, textarea {
-    min-height: 44px;
-    min-width: 44px;
-  }
+    /* Ensure touch targets are still accessible */
+    button,
+    a,
+    input,
+    select,
+    textarea {
+        min-height: 44px;
+        min-width: 44px;
+    }
 }
 
 /* Small Mobile (up to 480px) */
 @media (max-width: 480px) {
-  body {
-    font-size: 13px;
-  }
+    body {
+        font-size: 13px;
+    }
 }
 
 /* Tablet Portrait (641px to 768px) */
 @media (min-width: 641px) and (max-width: 768px) {
-  body {
-    font-size: 15px;
-  }
+    body {
+        font-size: 15px;
+    }
 
-  /* Optimize spacing for tablet portrait */
-  section {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+    /* Optimize spacing for tablet portrait */
+    section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
 }
 
 /* Show testimonial dots on medium screens and above */
 @media (min-width: 768px) {
-  .testimonial-dots {
-    display: flex !important;
-  }
+    .testimonial-dots {
+        display: flex !important;
+    }
 }
 
 /* Tablet Landscape (769px to 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
-  body {
-    font-size: 16px;
-  }
+    body {
+        font-size: 16px;
+    }
 
-  /* Optimize for tablet landscape */
-  section {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+    /* Optimize for tablet landscape */
+    section {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 }
 
 /* Desktop (1025px to 1279px) */
 @media (min-width: 1025px) and (max-width: 1279px) {
-  body {
-    font-size: 16px;
-  }
+    body {
+        font-size: 16px;
+    }
 }
 
 /* Large Desktop (1280px to 1919px) */
 @media (min-width: 1280px) and (max-width: 1919px) {
-  body {
-    font-size: 18px;
-  }
+    body {
+        font-size: 18px;
+    }
 }
 
 /* Extra Large Desktop (1920px and above) */
 @media (min-width: 1920px) {
-  body {
-    font-size: 20px;
-  }
+    body {
+        font-size: 20px;
+    }
 
-  /* Constrain max width for ultra-wide screens */
-  main {
-    max-width: 1920px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    /* Constrain max width for ultra-wide screens */
+    main {
+        max-width: 1920px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
-  /* Better touch interactions */
-  button, a {
-    padding: 12px 16px;
-    min-height: 48px;
-  }
+    /* Better touch interactions */
+    button,
+    a {
+        padding: 12px 16px;
+        min-height: 48px;
+    }
 
-  /* Remove hover effects on touch devices */
-  *:hover {
-    transition: none;
-  }
+    /* Remove hover effects on touch devices */
+    *:hover {
+        transition: none;
+    }
 }
 
 /* Landscape Mobile Optimization */
 @media (max-width: 896px) and (orientation: landscape) {
-  /* Reduce vertical spacing in landscape */
-  section {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
+    /* Reduce vertical spacing in landscape */
+    section {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
 
-  /* Make hero section more compact */
-  .hero-section {
-    min-height: auto;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
+    /* Make hero section more compact */
+    .hero-section {
+        min-height: auto;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
 
-  /* Reduce heading sizes in landscape */
-  h1, h2, h3 {
-    font-size: 0.9em;
-  }
+    /* Reduce heading sizes in landscape */
+    h1,
+    h2,
+    h3 {
+        font-size: 0.9em;
+    }
 }
 
 /* High DPI Displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* Ensure crisp rendering on retina displays */
-  img, svg {
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-  }
+    /* Ensure crisp rendering on retina displays */
+    img,
+    svg {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
 }
 
 /* Dark Mode Support (if needed in future) */
 @media (prefers-color-scheme: dark) {
-  /* Future dark mode styles */
+    /* Future dark mode styles */
 }
 
 /* Reduced Motion (Accessibility) */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Enforce pointer cursor on all buttons */
+button,
+[role="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+.btn {
+    cursor: pointer !important;
 }
