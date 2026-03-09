@@ -117,7 +117,7 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen bg-[#03396c] px-4 py-16 flex flex-col items-center">
-      <div className="w-full max-w-2xl space-y-6 mt-16">
+      <div className="w-full max-w-4xl space-y-6 mt-16">
         {/* Profile card */}
         <div className="bg-white rounded-2xl shadow-2xl p-8">
           <div className="flex items-center gap-4 mb-6">

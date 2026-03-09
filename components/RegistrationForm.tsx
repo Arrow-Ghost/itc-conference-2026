@@ -114,7 +114,7 @@ export default function RegistrationForm({
   // ── Not logged in ──────────────────────────────────────────────────────────
   if (!user) {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
             Authentication Required
@@ -136,7 +136,7 @@ export default function RegistrationForm({
   // ── Checking Firestore ─────────────────────────────────────────────────────
   if (checkingRegistration) {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
         <div className="flex flex-col items-center justify-center py-10 gap-4">
           <svg
             className="animate-spin h-10 w-10 text-gray-400"
@@ -182,7 +182,7 @@ export default function RegistrationForm({
           : "Pending Review";
 
     return (
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="flex-shrink-0 bg-green-50 rounded-full p-3">
@@ -270,7 +270,7 @@ export default function RegistrationForm({
   // ── Just submitted successfully ────────────────────────────────────────────
   if (success) {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
         <div className="text-center">
           <div className="mb-4">
             <svg
@@ -301,7 +301,7 @@ export default function RegistrationForm({
 
   // ── Registration form ──────────────────────────────────────────────────────
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+    <div className="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
       <div className="mb-6">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">{title}</h2>
         <p className="text-gray-600">{description}</p>

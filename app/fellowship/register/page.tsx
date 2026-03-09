@@ -6,7 +6,6 @@ import Image from "next/image";
 export default function FellowshipRegisterPage() {
   return (
     <main className="min-h-screen relative bg-[#03396c] text-white overflow-hidden">
-      {/* Background Pattern */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div
           className="absolute inset-0 opacity-10 bg-repeat"
@@ -16,12 +15,10 @@ export default function FellowshipRegisterPage() {
           }}
         />
 
-        {/* Vertical Grid Lines */}
         <div className="absolute top-0 right-10 h-full w-[1px] border-r border-white/10 hidden xl:block"></div>
         <div className="absolute top-0 left-10 h-full w-[1px] border-r border-white/10 hidden xl:block"></div>
       </div>
 
-      {/* Decorative Circuit Schematic - Optional */}
       <div className="absolute top-[100px] right-0 w-[40%] h-[400px] z-0 pointer-events-none hidden lg:block opacity-20">
         <div className="relative w-full h-full">
           <Image
@@ -38,7 +35,6 @@ export default function FellowshipRegisterPage() {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-7xl mt-24 md:mt-32">
-        {/* Header Section */}
         <div className="mb-12 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 uppercase tracking-tight pt-15">
             Fellowship Registration
@@ -50,7 +46,6 @@ export default function FellowshipRegisterPage() {
           <div className="w-24 h-1 bg-white/50 mx-auto"></div>
         </div>
 
-        {/* Registration Form */}
         <div className="mb-12">
           <RegistrationForm
             registrationType="fellowship"
@@ -59,7 +54,6 @@ export default function FellowshipRegisterPage() {
           />
         </div>
 
-        {/* Additional Information Section */}
         <div className="mt-16 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-8">
           <h2 className="text-3xl font-bold mb-6 uppercase">
             About the Fellowship
@@ -118,8 +112,7 @@ export default function FellowshipRegisterPage() {
                 href="mailto:fellowship@itcindia2026.org"
                 className="text-white underline hover:text-gray-100"
               >
-                fellowship@itcindia2026.org
-              </a>
+                info@itctestweekindia.org              </a>
             </p>
           </div>
         </div>

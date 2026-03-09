@@ -155,7 +155,7 @@ export default function FellowshipApplication() {
 
   return (
     <main className="min-h-screen bg-[#03396c] flex items-center justify-center px-4 py-16">
-      <div className="w-full max-w-2xl">
+      <div className="w-full max-w-4xl">
         {registration && !isEditing ? (
           <div className="bg-white rounded-2xl shadow-2xl p-8">
             {/* Header */}

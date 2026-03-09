@@ -20,7 +20,6 @@ export default function CallForSponsors() {
           </h2>
         </div>
 
-        {/* Introduction */}
         <section className="bg-white/5 p-8 rounded-lg border border-white/10 backdrop-blur-sm mb-10">
           <div className="space-y-4 text-gray-200 text-justify">
             <p>
@@ -48,7 +47,6 @@ export default function CallForSponsors() {
           </div>
         </section>
 
-        {/* Sponsorship Packages */}
         <section className="mb-10">
           <h3 className="text-2xl md:text-3xl font-bold mb-6 border-b border-white/20 pb-2">
             Sponsorship Packages
