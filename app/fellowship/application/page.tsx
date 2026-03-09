@@ -207,7 +207,6 @@ export default function FellowshipApplication() {
               </span>
             </div>
 
-            {/* Details table */}
             <div className="divide-y divide-gray-100 border border-gray-100 rounded-xl overflow-hidden mb-6">
               {[
                 { label: "Full Name", value: registration.name },
@@ -237,7 +236,6 @@ export default function FellowshipApplication() {
               ))}
             </div>
 
-            {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => setIsEditing(true)}

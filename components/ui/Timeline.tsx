@@ -48,7 +48,7 @@ export default function Timeline() {
   return (
     <section
       id="timeline"
-      className={`relative w-full flex flex-col pt-8 sm:pt-10 md:pt-12 lg:pt-14 xl:pt-16 pb-8 sm:pb-10 md:pb-12 overflow-x-hidden ${contentPadding}`}
+      className="relative w-full flex flex-col pt-8 sm:pt-10 md:pt-12 lg:pt-14 xl:pt-16 pb-8 sm:pb-10 md:pb-12 overflow-x-hidden px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12"
     >
       <div className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[110px] xl:h-[123px] pointer-events-none -z-10 opacity-60 sm:opacity-70 md:opacity-80">
         <Image
@@ -74,7 +74,10 @@ export default function Timeline() {
         </div>
 
         {/* Day 1 */}
-        <div className="relative z-10 w-full max-w-full flex justify-center items-center mb-6 sm:mb-12 cursor-pointer" onClick={() => setSelectedDay(1)}>
+        <div
+          className="relative z-10 w-full max-w-full flex justify-center items-center mb-6 sm:mb-12 cursor-pointer"
+          onClick={() => setSelectedDay(1)}
+        >
           <div className="relative w-full max-w-[90%] sm:max-w-[450px] md:max-w-[500px] xl:max-w-[525px] aspect-[525/175] h-auto hover:scale-105 transition-transform duration-300">
             <Image
               src="/images/timeline-card1.svg"
@@ -88,7 +91,10 @@ export default function Timeline() {
           </div>
         </div>
 
-        <div className="relative z-10 w-full max-w-full flex justify-center items-center mb-6 sm:mb-12 cursor-pointer" onClick={() => setSelectedDay(2)}>
+        <div
+          className="relative z-10 w-full max-w-full flex justify-center items-center mb-6 sm:mb-12 cursor-pointer"
+          onClick={() => setSelectedDay(2)}
+        >
           <div className="relative w-full max-w-[90%] sm:max-w-[450px] md:max-w-[500px] xl:max-w-[525px] aspect-[525/175] h-auto rotate-180 hover:scale-105 transition-transform duration-300">
             <Image
               src="/images/timeline-card2.svg"
@@ -102,7 +108,10 @@ export default function Timeline() {
           </div>
         </div>
 
-        <div className="relative z-10 w-full max-w-full flex justify-center items-center cursor-pointer" onClick={() => setSelectedDay(3)}>
+        <div
+          className="relative z-10 w-full max-w-full flex justify-center items-center cursor-pointer"
+          onClick={() => setSelectedDay(3)}
+        >
           <div className="relative w-full max-w-[90%] sm:max-w-[450px] md:max-w-[500px] xl:max-w-[525px] aspect-[525/175] h-auto hover:scale-105 transition-transform duration-300">
             <Image
               src="/images/timeline-card3.svg"
@@ -132,7 +141,7 @@ export default function Timeline() {
             <div className="relative flex items-center">
               {/* Ellipse (cylinder end) */}
               <div className="w-8 h-16 sm:w-10 sm:h-20 md:w-12 md:h-24 lg:w-14 lg:h-28 xl:w-16 xl:h-32 rounded-full bg-gradient-to-b from-[#6366f1] via-[#4f46e5] to-[#3730a3] border-2 border-[#818cf8] flex-shrink-0 hidden sm:block" />
-              
+
               {/* Rectangle body */}
               <div className="bg-gradient-to-b from-[#1e1b4b] via-[#312e81] to-[#1e1b4b] border-2 border-[#818cf8] rounded-r-2xl p-4 sm:p-6 md:p-8 max-w-[90%] sm:max-w-[450px] md:max-w-[500px] lg:max-w-[550px] max-h-[70vh] overflow-y-auto ml-0 sm:ml-[-8px]">
                 <button
@@ -145,8 +154,13 @@ export default function Timeline() {
                   {dayDetails[selectedDay as keyof typeof dayDetails].title}
                 </h3>
                 <div className="space-y-3 sm:space-y-4">
-                  {dayDetails[selectedDay as keyof typeof dayDetails].events.map((item, index) => (
-                    <div key={index} className="flex gap-3 sm:gap-4 border-b border-[#6366f1]/50 pb-2 sm:pb-3">
+                  {dayDetails[
+                    selectedDay as keyof typeof dayDetails
+                  ].events.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex gap-3 sm:gap-4 border-b border-[#6366f1]/50 pb-2 sm:pb-3"
+                    >
                       <span className="text-cyan-400 font-mono font-bold text-xs sm:text-sm min-w-[70px] sm:min-w-[80px]">
                         {item.time}
                       </span>
