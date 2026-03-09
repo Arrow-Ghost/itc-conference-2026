@@ -17,15 +17,12 @@ const testimonials = [
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Create extended array for seamless circular loop (duplicate first card at the end)
   const extendedTestimonials = [...testimonials, testimonials[0]];
   const totalSlides = testimonials.length; // 8 slides
 
-  // Auto-scroll functionality - only forward direction, one slide at a time
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => {
-        // Move forward by 1, loop back to 0 after reaching the end
         return (prevIndex + 1) % totalSlides;
       });
     }, 4000); // 4 seconds
@@ -46,7 +43,6 @@ export default function Testimonials() {
       id="testimonials"
       className="relative w-full pb-8 sm:pb-0 flex flex-col items-center -mt-[50px] sm:mt-0 pt-8 sm:pt-20 md:pt-24 lg:pt-30 px-3 sm:px-4 md:px-6 lg:px-8 overflow-x-hidden"
     >
-      {/* Separator - constrained to side lines but preserving unique slope */}
       <div className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[110px] xl:h-[123px] my-10 pointer-events-none -z-10 opacity-60 sm:opacity-70 md:opacity-80">
         <div className="absolute inset-0 w-full h-full rotate-180 scale-y-[-1]">
           <Image
@@ -63,7 +59,6 @@ export default function Testimonials() {
       </h2>
 
       <div className="relative w-full max-w-[1400px] overflow-hidden mx-auto pt-[80px] sm:pt-20 md:pt-24 xl:pt-[240px] mb-0 sm:mb-0">
-        {/* Carousel Container */}
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{

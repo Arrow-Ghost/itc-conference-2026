@@ -16,7 +16,7 @@ export default function Photos() {
           />
         </div>
       </div>
-      <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[36px] md:text-[40px] lg:text-[50px] xl:text-[60px] text-white mb-4 sm:mb-8 md:mb-12 xl:mb-16 relative xl:absolute top-0 sm:top-[65px] md:top-[70px] xl:top-[70px] right-0 sm:right-[1%] md:right-[6%] xl:right-[7%] z-10 text-right xl:text-right w-full xl:w-auto">
+      <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[36px] md:text-[40px] lg:text-[50px] xl:text-[60px] text-white mb-4 sm:mb-8 md:mb-12 xl:mb-16 relative xl:absolute top-0 sm:top-[65px] md:top-[70px] xl:top-[70px] right-0 sm:right-[1%] md:right-[6%] xl:right-[5%] z-10 text-right xl:text-right w-full xl:w-auto">
         PHOTOS SECTION
       </h2>
 

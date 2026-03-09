@@ -23,15 +23,12 @@ export default function FAQ() {
       </h2>
 
       <div className="flex flex-col xl:flex-row gap-6 sm:gap-12 md:gap-16 xl:gap-20 w-full max-w-full">
-        {/* Left Column: Contact / Form */}
         <div className="flex-1 flex flex-col gap-6 sm:gap-8 md:gap-10">
-          {/* Placeholder Text */}
           <div className="font-poppins font-medium text-[14px] sm:text-[18px] md:text-[22px] lg:text-[26px] xl:text-[30px] text-black bg-white/50 px-4 py-3 sm:px-6 sm:py-4 md:p-4 rounded backdrop-blur-sm break-words text-center md:text-left w-full box-border">
             loejdfhbklnskxdcfvgjhbnsdxfcghbjnkmszxdfcg
             zdxfcvbnmzsdxfcgvbhnmszdxfcgvhbjnmxdfcv szdxfcgvhbjn.
           </div>
 
-          {/* Contact Box */}
           <div className="bg-white rounded-[5px] px-4 py-4 sm:px-6 sm:py-5 md:p-6 lg:p-8 text-black min-h-[320px] sm:min-h-[400px] xl:min-h-[456px] relative w-full box-border">
             <h3 className="font-poppins font-semibold text-[22px] sm:text-[26px] xl:text-[30px] mt-2 sm:mt-4 mb-2 text-center md:text-left">
               Still have Questions?
@@ -40,7 +37,6 @@ export default function FAQ() {
               Contact Us.
             </p>
 
-            {/* Form */}
             <form className="flex flex-col gap-3 sm:gap-4 mt-6 sm:mt-8">
               <div className="relative">
                 <input
