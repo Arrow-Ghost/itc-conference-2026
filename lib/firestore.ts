@@ -1,4 +1,3 @@
-// Firestore Database Operations
 import {
   getFirestore,
   collection,
