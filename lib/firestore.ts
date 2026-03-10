@@ -13,10 +13,8 @@ import {
 } from "firebase/firestore";
 import app from "./firebase";
 
-// Initialize Firestore
 export const db = getFirestore(app);
 
-// Types
 export interface User {
   uid: string;
   email: string;
@@ -60,7 +58,6 @@ export interface PaperSubmission {
   uid: string;
   registrationId?: string;
 
-  // Author details
   authorName: string;
   authorEmail: string;
   authorPhone: string;
@@ -68,7 +65,6 @@ export interface PaperSubmission {
   authorDepartment: string;
   coAuthors?: CoAuthor[];
 
-  // Paper details
   paperTitle: string;
   paperAbstract: string;
   keywords?: string;
@@ -99,7 +95,6 @@ export interface PaperSubmission {
   updatedAt?: unknown;
 }
 
-// User Operations
 export const UserDB = {
   async upsert(userData: Omit<User, "createdAt" | "updatedAt" | "lastLogin">) {
     const userRef = doc(db, "users", userData.uid);
@@ -137,7 +132,6 @@ export const UserDB = {
   },
 };
 
-// Registration Operations
 export const RegistrationDB = {
   async create(
     registrationData: Omit<
@@ -244,7 +238,6 @@ export const RegistrationDB = {
   },
 };
 
-// Paper Submission Operations
 export const PaperSubmissionDB = {
   async create(
     submissionData: Omit<
