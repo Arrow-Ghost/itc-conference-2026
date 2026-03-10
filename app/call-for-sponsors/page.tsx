@@ -175,7 +175,6 @@ export default function CallForSponsors() {
           </div>
         </section>
 
-        {/* Additional Sponsorship Items */}
         <section className="mb-10">
           <h3 className="text-2xl md:text-3xl font-bold mb-6 border-b border-white/20 pb-2">
             Additional Sponsorship Items
@@ -231,7 +230,7 @@ export default function CallForSponsors() {
           </a>
           <p className="mt-4 text-gray-400">
             Contact us at:{" "}
-            <a href="mailto:sponsors@itctestweekindia.org" className="text-blue-300 hover:underline">
+            <a href="mailto:info@itctestweekindia.org" className="text-blue-300 hover:underline">
               info@itctestweekindia.org
             </a>
           </p>

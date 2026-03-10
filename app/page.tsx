@@ -13,7 +13,7 @@ export default function Home() {
       <div className="relative z-10 flex flex-col gap-0">
         <HeroWithTimer />
         <AboutUs />
-        <Timeline />
+        {/*<Timeline />*/}
         <Testimonials />
         <FAQ />
         <Photos />

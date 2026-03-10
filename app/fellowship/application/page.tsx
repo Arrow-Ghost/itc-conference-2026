@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useProtectedRoute } from "@/lib/useProtectedRoute";
 import { RegistrationDB, Registration } from "@/lib/firestore";
+import { validateRegistration, sanitizeFields } from "@/lib/validation";
 
 export default function FellowshipApplication() {
   const { user, loading: authLoading } = useProtectedRoute({
@@ -101,9 +102,13 @@ export default function FellowshipApplication() {
     setError(null);
     setSubmitting(true);
 
-    // Validate institutional email
-    if (!formData.email.includes(".edu") && !formData.email.includes(".ac.")) {
-      setError("Please use your institutional email address");
+    // Sanitize all string fields
+    const cleaned = sanitizeFields(formData);
+
+    // Validate all fields
+    const validation = validateRegistration(cleaned);
+    if (!validation.valid) {
+      setError(validation.error);
       setSubmitting(false);
       return;
     }
@@ -115,13 +120,13 @@ export default function FellowshipApplication() {
         result = await RegistrationDB.update(
           registration.id,
           user.uid,
-          formData,
+          cleaned,
         );
       } else {
         // Create new registration
         result = await RegistrationDB.create({
           uid: user.uid,
-          ...formData,
+          ...cleaned,
           registrationType: "fellowship",
         });
       }
@@ -286,6 +291,7 @@ export default function FellowshipApplication() {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    maxLength={200}
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
                     placeholder="John Doe"
                   />
@@ -300,6 +306,7 @@ export default function FellowshipApplication() {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    maxLength={254}
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
                     placeholder="john@university.edu"
                   />
@@ -320,6 +327,9 @@ export default function FellowshipApplication() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
+                    maxLength={20}
+                    pattern="[\d\s\-+()]{7,20}"
+                    title="Enter a valid phone number (7–20 characters, digits/spaces/dashes)"
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
                     placeholder="+91 98765 43210"
                   />
@@ -334,6 +344,7 @@ export default function FellowshipApplication() {
                     value={formData.institution}
                     onChange={handleChange}
                     required
+                    maxLength={300}
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
                     placeholder="University Name"
                   />
@@ -350,6 +361,7 @@ export default function FellowshipApplication() {
                     name="city"
                     value={formData.city}
                     onChange={handleChange}
+                    maxLength={100}
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
                     placeholder="City"
                   />
@@ -363,6 +375,7 @@ export default function FellowshipApplication() {
                     name="state"
                     value={formData.state}
                     onChange={handleChange}
+                    maxLength={100}
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
                     placeholder="State"
                   />
@@ -380,6 +393,7 @@ export default function FellowshipApplication() {
                     value={formData.department}
                     onChange={handleChange}
                     required
+                    maxLength={200}
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
                     placeholder="Computer Science"
                   />
@@ -430,6 +444,7 @@ export default function FellowshipApplication() {
                   value={formData.additionalInfo}
                   onChange={handleChange}
                   rows={4}
+                  maxLength={2000}
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm resize-none"
                   placeholder="Tell us about your research interests..."
                 />
