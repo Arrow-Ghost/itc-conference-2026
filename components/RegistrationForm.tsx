@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { RegistrationDB, Registration } from "@/lib/firestore";
 import { useAuth } from "@/lib/AuthContext";
+import { validateRegistration, sanitizeFields } from "@/lib/validation";
 
 interface RegistrationFormProps {
   registrationType: "fellowship" | "hackathon" | "cfp" | "cft" | "art";
@@ -85,9 +86,13 @@ export default function RegistrationForm({
     setError(null);
     setLoading(true);
 
-    // Validate email is institutional
-    if (!formData.email.includes(".edu") && !formData.email.includes(".ac.")) {
-      setError("Please use your institutional email address");
+    // Sanitize all string fields
+    const cleaned = sanitizeFields(formData);
+
+    // Validate all fields
+    const validation = validateRegistration(cleaned);
+    if (!validation.valid) {
+      setError(validation.error);
       setLoading(false);
       return;
     }
@@ -95,7 +100,7 @@ export default function RegistrationForm({
     try {
       await RegistrationDB.create({
         uid: user!.uid,
-        ...formData,
+        ...cleaned,
         registrationType,
       });
 
@@ -329,6 +334,7 @@ export default function RegistrationForm({
             value={formData.name}
             onChange={handleChange}
             required
+            maxLength={200}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             placeholder="Enter your full name"
           />
@@ -349,6 +355,7 @@ export default function RegistrationForm({
             value={formData.email}
             onChange={handleChange}
             required
+            maxLength={254}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             placeholder="your.name@university.edu"
           />
@@ -372,6 +379,9 @@ export default function RegistrationForm({
             value={formData.phone}
             onChange={handleChange}
             required
+            maxLength={20}
+            pattern="[\d\s\-+()]{7,20}"
+            title="Enter a valid phone number (7–20 characters, digits/spaces/dashes)"
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             placeholder="+91-9876543210"
           />
@@ -392,6 +402,7 @@ export default function RegistrationForm({
             value={formData.institution}
             onChange={handleChange}
             required
+            maxLength={300}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             placeholder="Enter your institution name"
           />
@@ -412,6 +423,7 @@ export default function RegistrationForm({
             value={formData.department}
             onChange={handleChange}
             required
+            maxLength={200}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             placeholder="e.g., Computer Science, Electrical Engineering"
           />
@@ -459,6 +471,7 @@ export default function RegistrationForm({
             value={formData.additionalInfo}
             onChange={handleChange}
             rows={4}
+            maxLength={2000}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             placeholder="Any additional information you'd like to share..."
           />
