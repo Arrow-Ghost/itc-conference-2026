@@ -70,8 +70,8 @@ export default function Testimonials() {
               key={`${testimonial.id}-${index}`}
               className="relative flex-shrink-0 w-full flex justify-center px-2 sm:px-2"
             >
-              <div className="relative w-full max-w-[90%] sm:max-w-[548px] min-h-[250px] sm:min-h-[280px] xl:min-h-[293px] bg-[#d9d9d9] rounded-sm p-4 sm:p-6 md:p-8 xl:p-10 shadow-lg mx-auto sm:mx-0 mt-4 mb-0 sm:my-0">
-                <div className="absolute top-4 sm:top-6 md:top-8 xl:top-10 left-4 sm:left-6 md:left-8 xl:left-10 w-[40px] sm:w-[50px] md:w-[60px] xl:w-[66px] h-[40px] sm:h-[50px] md:h-[60px] xl:h-[66px] rounded-full overflow-hidden">
+              <div className="relative w-full max-w-[90%] sm:max-w-[548px] min-h-[200px] sm:min-h-[280px] xl:min-h-[293px] bg-[#d9d9d9] rounded-sm p-3 sm:p-6 md:p-8 xl:p-10 shadow-lg mx-auto sm:mx-0 mt-4 mb-0 sm:my-0">
+                <div className="absolute top-3 sm:top-6 md:top-8 xl:top-10 left-3 sm:left-6 md:left-8 xl:left-10 w-[30px] sm:w-[50px] md:w-[60px] xl:w-[66px] h-[30px] sm:h-[50px] md:h-[60px] xl:h-[66px] rounded-full overflow-hidden">
                   <Image
                     src="/images/ellipse13.svg"
                     alt="Avatar"
@@ -80,18 +80,18 @@ export default function Testimonials() {
                   />
                 </div>
 
-                <div className="ml-[55px] sm:ml-[70px] md:ml-[80px] xl:ml-[90px] mb-4 sm:mb-6">
-                  <h4 className="font-poppins text-[16px] sm:text-[18px] md:text-[20px] xl:text-[24px] text-black leading-none mb-2">
+                <div className="ml-[45px] sm:ml-[70px] md:ml-[80px] xl:ml-[90px] mb-3 sm:mb-6">
+                  <h4 className="font-poppins text-[14px] sm:text-[18px] md:text-[20px] xl:text-[24px] text-black leading-none mb-1 sm:mb-2">
                     {testimonial.name}
                   </h4>
-                  <p className="font-poppins text-[16px] sm:text-[18px] md:text-[20px] xl:text-[24px] text-black leading-none">
+                  <p className="font-poppins text-[12px] sm:text-[18px] md:text-[20px] xl:text-[24px] text-black leading-none">
                     {testimonial.company}
                   </p>
                 </div>
 
-                <div className="relative font-poppins text-[14px] sm:text-[16px] md:text-[18px] xl:text-[24px] text-black mt-6 sm:mt-8 pl-7 sm:pl-8 md:pl-9 pr-8 sm:pr-9 md:pr-10">
+                <div className="relative font-poppins text-[12px] sm:text-[16px] md:text-[18px] xl:text-[24px] text-black mt-4 sm:mt-8 pl-5 sm:pl-8 md:pl-9 pr-4 sm:pr-9 md:pr-10">
                   {/* Opening quote " - at start of first line */}
-                  <div className="absolute left-0 top-0 w-[16px] sm:w-[18px] md:w-[20px] xl:w-[24px] h-[12px] sm:h-[14px] md:h-[16px] xl:h-[18px]">
+                  <div className="absolute left-0 top-0 w-[12px] sm:w-[18px] md:w-[20px] xl:w-[24px] h-[9px] sm:h-[14px] md:h-[16px] xl:h-[18px]">
                     <Image
                       src="/images/vector.svg"
                       alt=""
@@ -105,7 +105,7 @@ export default function Testimonials() {
                   <p className="flex items-baseline gap-4">
                     <span>sdbjhbdjhyvhsd</span>
                     {/* Closing quote " - inline at end of last line */}
-                    <span className="inline-flex shrink-0 w-[16px] sm:w-[18px] md:w-[20px] xl:w-[24px] h-[12px] sm:h-[14px] md:h-[16px] xl:h-[18px] relative">
+                    <span className="inline-flex shrink-0 w-[12px] sm:w-[18px] md:w-[20px] xl:w-[24px] h-[9px] sm:h-[14px] md:h-[16px] xl:h-[18px] relative">
                       <Image
                         src="/images/vector-open.svg"
                         alt=""
