@@ -19,7 +19,7 @@ export default function HeroWithTimer() {
           >
             {/* Inner div pushes the SVG into the right ~48 % and clips it */}
             <div
-              className="absolute top-0 bottom-0
+              className="absolute top-0 bottom-[55px] sm:bottom-[70px] md:bottom-[90px] lg:bottom-[100px] xl:bottom-[115px]
                             left-[52%] sm:left-[54%] md:left-[53%] lg:left-[51%] xl:left-[49%]
                             right-0"
             >
@@ -105,7 +105,7 @@ export default function HeroWithTimer() {
                        mt-3 sm:mt-5 md:mt-7 lg:mt-9 xl:mt-11"
           >
             {/* Dashed zig-zag SVG line */}
-            <div className="absolute inset-0 pointer-events-none opacity-60 sm:opacity-70 md:opacity-80">
+            <div className="absolute inset-0 pointer-events-none opacity-60 sm:opacity-70 md:opacity-80 z-0">
               <Image
                 src="/images/vector9.svg"
                 alt=""
@@ -115,7 +115,7 @@ export default function HeroWithTimer() {
             </div>
 
             {/* ABOUT US label */}
-            <div className="absolute top-0 left-0 w-[41%] h-full flex items-center justify-center z-10">
+            <div className="absolute top-0 left-0 w-[41%] h-full flex items-center justify-center z-20">
               <h2
                 className="font-angkor text-white text-center leading-[1.1]
                            text-[20px]
@@ -131,7 +131,7 @@ export default function HeroWithTimer() {
 
             {/* Countdown timer */}
             <div
-              className="absolute top-0 right-0 left-[41%] h-full overflow-hidden z-10"
+              className="absolute top-0 right-0 left-[41%] h-full overflow-hidden z-20"
               style={{
                 clipPath: "polygon(0 0, 100% 0, 100% 100%, 15.5% 100%, 0 0)",
               }}

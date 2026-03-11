@@ -325,13 +325,13 @@ export const members16: Member[] = [
     name: "Navin Bishnoi",
     comp: "Marvell Technology, India",
   },
-  {
-    id: 32,
-    link: "https://www.linkedin.com/in/prasad-mantri-5742b156/",
-    img: "p34.png",
-    name: "Prasad Mantri",
-    comp: "Eximietas Design, India",
-  },
+  // {
+  //   id: 32,
+  //   link: "https://www.linkedin.com/in/prasad-mantri-5742b156/",
+  //   img: "p34.png",
+  //   name: "Prasad Mantri",
+  //   comp: "Eximietas Design, India",
+  // },
 ];
 
 // Posters Co-Chair
