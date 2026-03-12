@@ -103,7 +103,6 @@ export default function Testimonials() {
                   <p>hesbdjcsudyub</p>
                   <p className="flex items-baseline gap-4">
                     <span>sdbjhbdjhyvhsd</span>
-                    {/* Closing quote " - inline at end of last line */}
                     <span className="inline-flex shrink-0 w-[12px] sm:w-[18px] md:w-[20px] xl:w-[24px] h-[9px] sm:h-[14px] md:h-[16px] xl:h-[18px] relative">
                       <Image
                         src="/images/vector-open.svg"
