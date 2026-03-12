@@ -60,10 +60,7 @@ export default function CountdownTimer({
   // Desktop: fills zig-zag gap, uses fluid typography so it always fits
   if (variant === "desktop") {
     return (
-      <div
-        className="relative w-full h-full min-w-0 min-h-0 flex items-center justify-center overflow-hidden font-sarpanch text-white"
-        style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15.5% 100%, 0 0)" }}
-      >
+      <div className="relative w-full h-full min-w-0 min-h-0 flex items-center justify-center overflow-hidden font-sarpanch text-white">
         <div
           className="absolute inset-0 -inset-[2px] bg-gradient-to-r from-[#022241] to-[#0557A7]"
           aria-hidden
@@ -111,7 +108,7 @@ export default function CountdownTimer({
           {segments.map(({ value, label }) => (
             <div
               key={label}
-              className="flex flex-col items-center min-w-[40px] sm:min-w-[50px] md:min-w-[60px] lg:min-w-[65px]"
+              className="flex flex-col items-center flex-shrink min-w-0 sm:min-w-[50px] md:min-w-[60px] lg:min-w-[65px]"
             >
               <span className="text-[20px] leading-[1] sm:text-[24px] md:text-[32px] lg:text-[38px] xl:text-[42px] font-bold">
                 {value}
@@ -136,13 +133,13 @@ export default function CountdownTimer({
         className="object-cover"
         sizes="220px"
       />
-      <div className="relative z-10 flex items-center justify-center gap-6 sm:gap-10 w-full h-full px-3">
+      <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-6 md:gap-10 w-full h-full px-1 sm:px-3">
         {segments.map(({ value, label }) => (
           <div
             key={label}
-            className="flex flex-col items-center justify-center text-center min-w-[40px] sm:min-w-[50px]"
+            className="flex flex-col items-center justify-center text-center min-w-0 flex-shrink sm:min-w-[50px]"
           >
-            <span className="text-[28px] sm:text-[38px] md:text-[48px] font-bold leading-none">
+            <span className="text-[20px] sm:text-[38px] md:text-[48px] font-bold leading-none">
               {value}
             </span>
             <span className="text-[8px] sm:text-[9px] md:text-[10px] tracking-wider mt-0.5">

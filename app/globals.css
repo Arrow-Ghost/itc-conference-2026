@@ -73,17 +73,24 @@ body {
         line-height: 1.5;
     }
 
-    /* Improve touch targets */
-    button,
-    a,
-    input,
+    /* Improve touch targets — scoped to nav links, form controls, and CTA buttons only.
+       Dot indicators, inline links, and small UI buttons are intentionally excluded. */
+    nav a,
+    nav button,
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"],
+    .btn,
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="url"],
     select,
     textarea {
         min-height: 44px;
-        min-width: 44px;
     }
-
-    /* Better spacing for mobile - removed to allow component-specific padding */
 
     /* Optimize images for mobile */
     img {
@@ -113,11 +120,6 @@ body {
     * {
         -webkit-text-size-adjust: 100%;
         -ms-text-size-adjust: 100%;
-    }
-
-    /* Hero Section Mobile Refinements */
-    .hero-section {
-        /* Ensure Hero content respects side lines on mobile */
     }
 
     /* Hero title text size reduction on mobile */
@@ -189,8 +191,7 @@ body {
         overflow-x: hidden !important;
     }
 
-    .faq-section * {
-        max-width: 100% !important;
+    .faq-section > * {
         box-sizing: border-box !important;
     }
 
@@ -205,16 +206,6 @@ body {
 @media (max-width: 360px) {
     body {
         font-size: 12px;
-    }
-
-    /* Ensure touch targets are still accessible */
-    button,
-    a,
-    input,
-    select,
-    textarea {
-        min-height: 44px;
-        min-width: 44px;
     }
 }
 
@@ -231,11 +222,7 @@ body {
         font-size: 15px;
     }
 
-    /* Optimize spacing for tablet portrait */
-    section {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
+    /* Let component-level Tailwind classes handle section padding */
 }
 
 /* Show testimonial dots on medium screens and above */
@@ -251,11 +238,7 @@ body {
         font-size: 16px;
     }
 
-    /* Optimize for tablet landscape */
-    section {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
+    /* Let component-level Tailwind classes handle section padding */
 }
 
 /* Desktop (1025px to 1279px) */
@@ -288,13 +271,6 @@ body {
 
 /* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
-    /* Better touch interactions */
-    button,
-    a {
-        padding: 12px 16px;
-        min-height: 48px;
-    }
-
     /* Remove hover effects on touch devices */
     *:hover {
         transition: none;
@@ -314,13 +290,6 @@ body {
         min-height: auto;
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
-    }
-
-    /* Reduce heading sizes in landscape */
-    h1,
-    h2,
-    h3 {
-        font-size: 0.9em;
     }
 }
 

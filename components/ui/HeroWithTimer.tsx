@@ -85,7 +85,7 @@ export default function HeroWithTimer() {
                              md:text-[17px] md:mt-4
                              lg:text-[19px]
                              xl:text-[21px] xl:mt-5
-                             max-w-[560px]"
+                             max-w-full sm:max-w-[560px]"
                 >
                   AN INITIATIVE TOWARDS INDIA&apos;S
                   <br className="hidden sm:block" />
@@ -100,7 +100,7 @@ export default function HeroWithTimer() {
 
           {/* ── Timer / header bar ── */}
           <header
-            className="relative w-full flex-shrink-0 z-10
+            className="relative w-full flex-shrink-0 min-w-0 z-10
                        h-[55px] sm:h-[70px] md:h-[90px] lg:h-[100px] xl:h-[115px]
                        mt-3 sm:mt-5 md:mt-7 lg:mt-9 xl:mt-11"
           >
@@ -115,10 +115,10 @@ export default function HeroWithTimer() {
             </div>
 
             {/* ABOUT US label */}
-            <div className="absolute top-0 left-0 w-[41%] h-full flex items-center justify-center z-20">
+            <div className="absolute top-0 left-0 w-[41%] h-full flex items-center justify-center z-20 overflow-hidden">
               <h2
-                className="font-angkor text-white text-center leading-[1.1]
-                           text-[20px]
+                className="font-angkor text-white text-center leading-[1.1] whitespace-nowrap
+                           text-[16px]
                            sm:text-[32px]
                            md:text-[42px]
                            lg:text-[50px]

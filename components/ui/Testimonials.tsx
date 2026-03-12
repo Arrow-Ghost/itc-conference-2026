@@ -41,7 +41,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative w-full pb-8 sm:pb-0 flex flex-col items-center -mt-[50px] sm:mt-0 pt-8 sm:pt-20 md:pt-24 lg:pt-30 px-3 sm:px-4 md:px-6 lg:px-8 overflow-x-hidden"
+      className="relative w-full pb-8 sm:pb-0 flex flex-col items-center mt-0 sm:mt-0 pt-8 sm:pt-20 md:pt-24 lg:pt-30 px-3 sm:px-4 md:px-6 lg:px-8 overflow-x-hidden"
     >
       <div className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[110px] xl:h-[123px] my-10 pointer-events-none -z-10 opacity-60 sm:opacity-70 md:opacity-80">
         <div className="absolute inset-0 w-full h-full rotate-180 scale-y-[-1]">
@@ -54,11 +54,11 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[40px] md:text-[50px] lg:text-[60px] xl:text-[75px] text-white mb-8 sm:mb-8 md:mb-12 xl:mb-20 absolute xl:absolute top-[70px] sm:top-[65px] md:top-[60px] xl:top-[80px] right-[1%] sm:right-[4%] md:right-[7%] xl:right-[5%] z-10 text-right xl:text-right mr-[30px] sm:mr-0">
+      <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[40px] md:text-[50px] lg:text-[60px] xl:text-[75px] text-white mb-4 sm:mb-8 md:mb-12 xl:mb-20 relative xl:absolute xl:top-[80px] xl:right-[5%] z-10 text-center md:text-right w-full xl:w-auto mt-7">
         TESTIMONIALS
       </h2>
 
-      <div className="relative w-full max-w-[1400px] overflow-hidden mx-auto pt-[80px] sm:pt-20 md:pt-24 xl:pt-[240px] mb-0 sm:mb-0">
+      <div className="relative w-4/5 max-w-[1100px] overflow-hidden mx-auto pt-1 sm:pt-20 md:pt-24 xl:pt-[240px] mb-0 sm:mb-0">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{
@@ -89,8 +89,7 @@ export default function Testimonials() {
                   </p>
                 </div>
 
-                <div className="relative font-poppins text-[12px] sm:text-[16px] md:text-[18px] xl:text-[24px] text-black mt-4 sm:mt-8 pl-5 sm:pl-8 md:pl-9 pr-4 sm:pr-9 md:pr-10">
-                  {/* Opening quote " - at start of first line */}
+                <div className="relative font-poppins text-[12px] sm:text-[16px] md:text-[18px] xl:text-[24px] text-black mt-4 sm:mt-8 pl-5 sm:pl-8 md:pl-9 pr-4 sm:pr-9 md:pr-10 overflow-hidden break-words">
                   <div className="absolute left-0 top-0 w-[12px] sm:w-[18px] md:w-[20px] xl:w-[24px] h-[9px] sm:h-[14px] md:h-[16px] xl:h-[18px]">
                     <Image
                       src="/images/vector.svg"
@@ -121,11 +120,11 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Navigation Arrows - Hidden on mobile, visible on tablet and above */}
-        <div className="hidden sm:flex absolute left-0 right-0 justify-between px-4 sm:px-8 md:px-12 xl:px-20 top-[calc(50%)] -translate-y-1/2 pointer-events-none z-20">
+        {/* Navigation Arrows - Hidden on mobile and sm, visible on md and above */}
+        <div className="hidden md:flex absolute left-0 right-0 justify-between px-4 md:px-12 xl:px-20 top-[calc(50%)] -translate-y-1/2 pointer-events-none z-20">
           <button
             onClick={goToPrev}
-            className="relative w-[20px] sm:w-[22px] md:w-[24px] xl:w-[25px] h-[40px] sm:h-[50px] md:h-[55px] xl:h-[60px] rotate-180 pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
+            className="relative w-[20px] md:w-[24px] xl:w-[25px] h-[40px] md:h-[55px] xl:h-[60px] rotate-180 pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
             aria-label="Previous testimonial"
           >
             <Image
@@ -137,7 +136,7 @@ export default function Testimonials() {
           </button>
           <button
             onClick={goToNext}
-            className="relative w-[20px] sm:w-[22px] md:w-[24px] xl:w-[25px] h-[40px] sm:h-[50px] md:h-[55px] xl:h-[60px] pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
+            className="relative w-[20px] md:w-[24px] xl:w-[25px] h-[40px] md:h-[55px] xl:h-[60px] pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
             aria-label="Next testimonial"
           >
             <Image
