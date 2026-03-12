@@ -19,9 +19,7 @@ export default function CallForPapers() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {/* Main Content Column */}
           <div className="lg:col-span-2 space-y-12">
-            {/* Introduction */}
             <section className="bg-white/5 p-8 rounded-lg border border-white/10 backdrop-blur-sm">
               <div className="space-y-4 text-gray-200 text-justify">
                 <p>
