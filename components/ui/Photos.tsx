@@ -1,6 +1,30 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useEffect } from "react";
+
+const photos = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
 
 export default function Photos() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalSlides = photos.length;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+    }, 4000); // 4 seconds
+
+    return () => clearInterval(interval);
+  }, [totalSlides]);
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+  };
+
+  const goToPrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
+  };
+
   return (
     <section
       id="photos"
@@ -16,17 +40,72 @@ export default function Photos() {
           />
         </div>
       </div>
+
       <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[36px] md:text-[40px] lg:text-[50px] xl:text-[60px] text-white mb-4 sm:mb-8 md:mb-12 xl:mb-16 relative xl:absolute top-0 sm:top-[65px] md:top-[70px] xl:top-[70px] right-0 sm:right-[1%] md:right-[6%] xl:right-[5%] z-10 text-right xl:text-right w-full xl:w-auto">
         PHOTOS SECTION
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 xl:gap-10 pt-0 sm:pt-16 md:pt-20 xl:pt-[140px] w-full max-w-full">
-        {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="w-[90%] max-w-[280px] sm:w-[280px] md:w-[320px] xl:w-[361px] h-[200px] sm:h-[220px] md:h-[240px] xl:h-[267px] bg-[#d9d9d9] rounded-lg"
+      <div className="relative w-full max-w-[1400px] overflow-hidden mx-auto pt-4 sm:pt-16 md:pt-20 xl:pt-[140px] mb-0">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`,
+          }}
+        >
+          {photos.map((photo, index) => (
+            <div
+              key={`${photo.id}-${index}`}
+              className="relative flex-shrink-0 w-full flex justify-center px-2"
+            >
+              <div className="w-[90%] sm:w-[80%] md:w-[70%] max-w-[600px] h-[250px] sm:h-[350px] md:h-[400px] bg-[#d9d9d9] rounded-lg">
+                {/* Photo content/image would go here */}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Arrows - Hidden on mobile, visible on tablet and above */}
+        <div className="hidden sm:flex absolute left-0 right-0 justify-between px-4 sm:px-8 md:px-12 xl:px-20 top-[calc(50%+20px)] sm:top-[calc(50%+40px)] md:top-[calc(50%+50px)] xl:top-[calc(50%+70px)] -translate-y-1/2 pointer-events-none z-20">
+          <button
+            onClick={goToPrev}
+            className="relative w-[20px] sm:w-[22px] md:w-[24px] xl:w-[25px] h-[40px] sm:h-[50px] md:h-[55px] xl:h-[60px] rotate-180 pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
+            aria-label="Previous photo"
           >
-          </div>
+            <Image
+              src="/images/vector8.svg"
+              alt="Previous"
+              fill
+              className="object-contain"
+            />
+          </button>
+          <button
+            onClick={goToNext}
+            className="relative w-[20px] sm:w-[22px] md:w-[24px] xl:w-[25px] h-[40px] sm:h-[50px] md:h-[55px] xl:h-[60px] pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
+            aria-label="Next photo"
+          >
+            <Image
+              src="/images/vector7.svg"
+              alt="Next"
+              fill
+              className="object-contain"
+            />
+          </button>
+        </div>
+      </div>
+
+      {/* Dot Indicators */}
+      <div className="testimonial-dots hidden md:flex gap-3 mt-8 sm:mt-10 mb-0 justify-center items-center">
+        {photos.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-[12px] h-[12px] min-w-[12px] min-h-[12px] max-w-[12px] max-h-[12px] rounded-full transition-all duration-300 flex-shrink-0 p-0 border-0 ${
+              currentIndex === index
+                ? "bg-white opacity-100"
+                : "bg-white opacity-30 hover:opacity-50"
+            }`}
+            aria-label={`Go to photo ${index + 1}`}
+          />
         ))}
       </div>
     </section>

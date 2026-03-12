@@ -4,7 +4,6 @@ export default function SponsorsPage() {
   return (
     <main className="min-h-screen relative text-white font-poppins selection:bg-white/20">
       <div className="relative z-10 pt-[150px] pb-20 px-4 md:px-10 max-w-[1400px] mx-auto flex flex-col">
-        {/* Header Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-[56px] font-bold tracking-tight text-white mb-6 font-space-grotesk">
             OUR SPONSORS
@@ -15,7 +14,6 @@ export default function SponsorsPage() {
           </p>
         </div>
 
-        {/* Silicon Sponsors */}
         <section className="mb-24">
           <div className="flex items-center justify-center gap-4 mb-12">
             <div className="h-[1px] bg-gradient-to-r from-transparent to-yellow-400 w-24 md:w-48"></div>
@@ -51,7 +49,6 @@ export default function SponsorsPage() {
           </div>
         </section>
 
-        {/* Platinum Sponsors Placeholder */}
         <section className="mb-24 opacity-60 hover:opacity-100 transition-opacity duration-300">
              <div className="flex items-center justify-center gap-4 mb-8">
                 <div className="h-[1px] bg-gradient-to-r from-transparent to-gray-400 w-16 md:w-32"></div>
@@ -67,7 +64,6 @@ export default function SponsorsPage() {
             </div>
         </section>
 
-        {/* Gold Sponsors Placeholder */}
         <section className="mb-24 opacity-60 hover:opacity-100 transition-opacity duration-300">
              <div className="flex items-center justify-center gap-4 mb-8">
                 <div className="h-[1px] bg-gradient-to-r from-transparent to-yellow-600 w-12 md:w-24"></div>
@@ -83,7 +79,6 @@ export default function SponsorsPage() {
             </div>
         </section>
 
-        {/* CTA Section */}
         <div className="mt-10 text-center bg-gradient-to-b from-white/5 to-white/[0.02] p-10 md:p-16 rounded-3xl border border-white/10 backdrop-blur-md relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-50"></div>
 
@@ -99,7 +94,7 @@ export default function SponsorsPage() {
                 View Packages
             </Link>
             <a
-                href="mailto:sponsors@itctestweekindia.org"
+                href="mailto:info@itctestweekindia.org"
                 className="inline-flex justify-center items-center bg-transparent border-2 border-white/30 hover:border-white text-white font-bold text-lg px-8 py-4 rounded-lg transition-all hover:bg-white/10"
             >
                 Contact Us
