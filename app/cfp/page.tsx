@@ -250,13 +250,13 @@ export default function CallForPapers() {
                   <p className="text-xs text-gray-300 uppercase">
                     Abstract Submission Deadline
                   </p>
-                  <p className="text-lg font-semibold">3rd March 2026</p>
+                  <p className="text-lg font-semibold">17th March 2026</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-300 uppercase">
                     Paper Submission Deadline
                   </p>
-                  <p className="text-lg font-semibold">10th March, 2026</p>
+                  <p className="text-lg font-semibold">24th March, 2026</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-300 uppercase">
