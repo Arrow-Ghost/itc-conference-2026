@@ -119,11 +119,11 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Navigation Arrows - Hidden on mobile and sm, visible on md and above */}
-        <div className="hidden md:flex absolute left-0 right-0 justify-between px-4 md:px-12 xl:px-20 top-[calc(50%)] -translate-y-1/2 pointer-events-none z-20">
+        {/* Navigation Arrows - Hidden on mobile, sm, and md, visible on lg and above */}
+        <div className="hidden lg:flex absolute left-0 right-0 justify-between px-4 lg:px-12 xl:px-20 top-[calc(50%)] -translate-y-1/2 pointer-events-none z-20">
           <button
             onClick={goToPrev}
-            className="relative w-[20px] md:w-[24px] xl:w-[25px] h-[40px] md:h-[55px] xl:h-[60px] rotate-180 pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
+            className="relative w-[20px] lg:w-[24px] xl:w-[25px] h-[40px] lg:h-[55px] xl:h-[60px] rotate-180 pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
             aria-label="Previous testimonial"
           >
             <Image
@@ -135,7 +135,7 @@ export default function Testimonials() {
           </button>
           <button
             onClick={goToNext}
-            className="relative w-[20px] md:w-[24px] xl:w-[25px] h-[40px] md:h-[55px] xl:h-[60px] pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
+            className="relative w-[20px] lg:w-[24px] xl:w-[25px] h-[40px] lg:h-[55px] xl:h-[60px] pointer-events-auto cursor-pointer hover:opacity-80 transition-opacity"
             aria-label="Next testimonial"
           >
             <Image
