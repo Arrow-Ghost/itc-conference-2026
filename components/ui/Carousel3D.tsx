@@ -74,11 +74,11 @@ export default function Carousel3D() {
   };
 
   // Radius of the cylinder — cards sit on this circle
-  const radius = 280;
+  const radius = 180;
 
   return (
     <div
-      className="relative w-full max-w-[480px] mx-auto xl:mx-0 xl:ml-8 select-none"
+      className="relative w-full max-w-[420px] mx-auto xl:mx-0 xl:ml-8 select-none"
       style={{ perspective: "1000px" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -88,7 +88,7 @@ export default function Carousel3D() {
       onPointerCancel={handlePointerUp}
     >
       {/* Carousel container — aspect ratio keeps it proportional */}
-      <div className="relative w-full aspect-[4/3] flex items-center justify-center">
+      <div className="relative w-full aspect-[5/3] flex items-center justify-center">
         <div
           className="absolute w-[200px] sm:w-[220px] md:w-[240px] lg:w-[260px] h-full"
           style={{
@@ -112,7 +112,7 @@ export default function Carousel3D() {
                 {/* Card with curved appearance via shadow + border */}
                 <div
                   className={`
-                    relative w-full h-full rounded-xl overflow-hidden
+                    relative w-full h-full rounded-3xl overflow-hidden
                     bg-gradient-to-br ${item.bg}
                     border border-gray-200/80
                     shadow-[0_4px_24px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.9)]

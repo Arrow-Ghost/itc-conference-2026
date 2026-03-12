@@ -25,7 +25,7 @@ export default function Testimonials() {
       setCurrentIndex((prevIndex) => {
         return (prevIndex + 1) % totalSlides;
       });
-    }, 4000); // 4 seconds
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [totalSlides]);
@@ -41,7 +41,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative w-full pb-8 sm:pb-0 flex flex-col items-center mt-0 sm:mt-0 pt-8 sm:pt-20 md:pt-24 lg:pt-30 px-3 sm:px-4 md:px-6 lg:px-8 overflow-x-hidden"
+      className="relative w-full pb-4 sm:pb-0 flex flex-col items-center mt-0 sm:mt-0 pt-4 sm:pt-10 md:pt-12 lg:pt-14 px-3 sm:px-4 md:px-6 lg:px-8 overflow-x-hidden"
     >
       <div className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[110px] xl:h-[123px] my-10 pointer-events-none -z-10 opacity-60 sm:opacity-70 md:opacity-80">
         <div className="absolute inset-0 w-full h-full rotate-180 scale-y-[-1]">
@@ -54,11 +54,11 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[40px] md:text-[50px] lg:text-[60px] xl:text-[75px] text-white mb-4 sm:mb-8 md:mb-12 xl:mb-20 relative xl:absolute xl:top-[80px] xl:right-[5%] z-10 text-center md:text-right w-full xl:w-auto mt-7">
+      <h2 className="font-angkor text-[28px] leading-[1.1] sm:text-[40px] md:text-[50px] lg:text-[60px] xl:text-[75px] text-white mb-2 sm:mb-4 md:mb-6 xl:mb-10 relative xl:absolute xl:top-[50px] xl:right-[5%] z-10 text-center md:text-right w-full xl:w-auto mt-4">
         TESTIMONIALS
       </h2>
 
-      <div className="relative w-4/5 max-w-[1100px] overflow-hidden mx-auto pt-1 sm:pt-20 md:pt-24 xl:pt-[240px] mb-0 sm:mb-0">
+      <div className="relative w-4/5 max-w-[1100px] overflow-hidden mx-auto pt-1 sm:pt-10 md:pt-12 xl:pt-[160px] mb-0 sm:mb-0">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{
@@ -149,7 +149,7 @@ export default function Testimonials() {
       </div>
 
       {/* Dot Indicators */}
-      <div className="testimonial-dots hidden md:flex gap-3 mt-8 sm:mt-10 mb-0 justify-center items-center">
+      <div className="testimonial-dots hidden md:flex gap-3 mt-4 sm:mt-6 mb-0 justify-center items-center">
         {testimonials.map((_, index) => (
           <button
             key={index}
