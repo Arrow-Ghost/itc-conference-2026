@@ -87,9 +87,9 @@ export default function HeroWithTimer() {
                              xl:text-[21px] xl:mt-5
                              max-w-full sm:max-w-[560px]"
                 >
-                  AN INITIATIVE TOWARDS INDIA&apos;S
+                  REIMAGINING TEST IN THE ERA OF
                   <br className="hidden sm:block" />
-                  <span className="sm:hidden"> </span>SEMICONDUCTOR ECOSYSTEM
+                  <span className="sm:hidden"> </span>INTELLIGENT SILICON
                 </h3>
               </div>
             </div>
