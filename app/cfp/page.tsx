@@ -27,8 +27,8 @@ export default function CallForPapers() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          <div className="lg:col-span-2 space-y-12">
-            <section className="bg-white/5 p-8 rounded-lg border border-white/10 backdrop-blur-sm">
+          <div className="lg:col-span-2 space-y-6">
+            <section className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
               <div className="space-y-4 text-gray-200 text-justify">
                 <p>
                   Celebrating its 10th edition, the IEEE International Test
@@ -48,8 +48,7 @@ export default function CallForPapers() {
               </div>
             </section>
 
-            {/* Submission Format */}
-            <section className="bg-white/5 p-8 rounded-lg border border-white/10 backdrop-blur-sm">
+            <section className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
               <h3 className="text-2xl font-bold mb-6 border-b border-white/20 pb-2">
                 Submission Format
               </h3>
@@ -69,8 +68,7 @@ export default function CallForPapers() {
               </ul>
             </section>
 
-            {/* Review Process */}
-            <section className="bg-white/5 p-8 rounded-lg border border-white/10 backdrop-blur-sm">
+            <section className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
               <h3 className="text-2xl font-bold mb-6 border-b border-white/20 pb-2">
                 Review Process
               </h3>
@@ -87,8 +85,7 @@ export default function CallForPapers() {
               </ul>
             </section>
 
-            {/* Submission Guidelines */}
-            <section className="bg-white/5 p-8 rounded-lg border border-white/10 backdrop-blur-sm">
+            <section className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
               <h3 className="text-2xl font-bold mb-6 border-b border-white/20 pb-2">
                 Submission Guidelines
               </h3>
@@ -159,8 +156,7 @@ export default function CallForPapers() {
               </ul>
             </section>
 
-            {/* Conference Tracks & Suggested Topics */}
-            <section className="bg-white/5 p-8 rounded-lg border border-white/10 backdrop-blur-sm">
+            <section className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm">
               <h3 className="text-2xl font-bold mb-6 border-b border-white/20 pb-2">
                 Conference Tracks & Suggested Topics
               </h3>
@@ -244,9 +240,7 @@ export default function CallForPapers() {
             </section>
           </div>
 
-          {/* Sidebar Information */}
           <div className="lg:col-span-1 space-y-8">
-            {/* Important Dates Box */}
             <div className="bg-[#1a4b7c] p-6 rounded-lg border border-[#6aaff1]/50 shadow-lg sticky top-24">
               <h3 className="text-xl font-bold mb-4 text-[#6aaff1] border-b border-[#6aaff1]/30 pb-2">
                 Important Dates
@@ -288,8 +282,7 @@ export default function CallForPapers() {
               </div>
             </div>
 
-            {/* Contact Info */}
-            <div className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm text-sm text-gray-300">
+            <div className="bg-white/5 p-6 rounded-lg border border-white/10 backdrop-blur-sm text-sm text-gray-300 lg:!mt-49">
               <h4 className="font-bold text-white mb-2">Need Help?</h4>
               <p className="mb-4">
                 For detailed information about the submission process,
@@ -321,6 +314,7 @@ export default function CallForPapers() {
                   </a>
                 </p>
               </div>
+
             </div>
           </div>
         </div>

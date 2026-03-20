@@ -163,7 +163,6 @@ export default function FellowshipApplication() {
       <div className="w-full max-w-4xl">
         {registration && !isEditing ? (
           <div className="bg-white rounded-2xl shadow-2xl p-8">
-            {/* Header */}
             <div className="flex items-center gap-3 mb-5">
               <div className="flex-shrink-0 bg-green-50 rounded-full p-2">
                 <svg
@@ -192,7 +191,6 @@ export default function FellowshipApplication() {
               </div>
             </div>
 
-            {/* Status badge */}
             <div className="mb-5">
               <span
                 className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border ${

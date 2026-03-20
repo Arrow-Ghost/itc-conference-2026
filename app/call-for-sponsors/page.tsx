@@ -223,7 +223,7 @@ export default function CallForSponsors() {
 
         <div className="mt-10 text-center">
           <a
-            href="mailto:sponsors@itctestweekindia.org"
+            href="mailto:info@itctestweekindia.org"
             className="inline-block bg-yellow-500 hover:bg-yellow-400 text-[#03396c] font-bold text-lg px-8 py-4 rounded transition-colors"
           >
             BECOME A SPONSOR

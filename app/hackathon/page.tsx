@@ -4,7 +4,6 @@ import Link from "next/link";
 export default function HackathonPage() {
   return (
     <main className="min-h-screen relative bg-[#03396c] text-white font-poppins overflow-hidden selection:bg-white/20">
-      {/* Grid Background */}
       <div
         className="absolute inset-0 z-0 opacity-10 pointer-events-none"
         style={{
@@ -16,7 +15,6 @@ export default function HackathonPage() {
         }}
       />
 
-      {/* Circuit Schematic Background */}
       <div className="absolute top-[120px] right-15 w-[80%] h-[600px] z-0 pointer-events-none hidden lg:block opacity-60">
         <div className="relative w-full h-full">
           <Image
@@ -29,10 +27,9 @@ export default function HackathonPage() {
       </div>
 
       <div className="relative z-10 pt-[150px] pb-20 px-6 md:px-16 max-w-[1400px] mx-auto flex flex-col">
-        {/* Header Section */}
         <div className="max-w-4xl mb-20 relative">
           <div className="mb-6">
-            <p className="text-sm md:text-base font-semibold text-yellow-400 uppercase tracking-wider mb-2">
+            <p className="text-sm md:text-base font-semibold text-[#6aaff1] uppercase tracking-wider mb-2">
               ITC India 2026 Presents
             </p>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight uppercase leading-tight">
@@ -45,7 +42,7 @@ export default function HackathonPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <Link href="/hackathon/register">
-              <button className="bg-yellow-500 hover:bg-yellow-400 text-[#03396c] text-lg md:text-xl font-bold py-4 px-10 rounded-lg shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all duration-300 uppercase tracking-wider">
+              <button className="bg-[#6aaff1] hover:bg-[#6aaff1]/90 text-[#03396c] text-lg md:text-xl font-bold py-4 px-10 rounded-lg shadow-[0_0_20px_rgba(106,175,241,0.3)] transition-all duration-300 uppercase tracking-wider">
                 Register Now
               </button>
             </Link>
@@ -56,12 +53,11 @@ export default function HackathonPage() {
             </Link>
           </div>
 
-          {/* Event Details Banner */}
-          <div className="bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20 shadow-xl">
+          <div className="bg-white/10 backdrop-blur-md p-6 pr-4 rounded-lg border border-white/20 shadow-xl">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
                 <p className="text-xs text-gray-300 uppercase mb-1">Date</p>
-                <p className="text-xl md:text-2xl font-bold text-yellow-400">
+                <p className="text-xl md:text-2xl font-bold text-[#6aaff1]">
                   July 19-21, 2026
                 </p>
               </div>
@@ -79,18 +75,16 @@ export default function HackathonPage() {
           </div>
         </div>
 
-        {/* Decorative Line */}
         <div className="relative w-full mb-16 hidden md:block">
-          <div className="absolute -left-6 right-[30%] top-0 border-t border-dashed border-white/30"></div>
-          <div className="absolute right-[30%] top-0 w-20 h-20 border-t border-r border-dashed border-white/30 transform skew-x-45 origin-top-left"></div>
+          {/*<div className="absolute -left-6 right-[30%] top-0 border-t border-dashed border-white/30"></div>*/}
+          {/*<div className="absolute right-[30%] top-0 w-20 h-20 border-t border-r border-dashed border-white/30 transform skew-x-45 origin-top-left"></div>*/}
         </div>
 
-        {/* About Section */}
         <div id="details" className="mb-16 scroll-mt-32">
           <h2 className="text-4xl md:text-5xl font-bold uppercase leading-none mb-8">
             About the Hackathon
           </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent mb-8"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-[#6aaff1] to-transparent mb-8"></div>
 
           <div className="bg-white/5 backdrop-blur-sm p-8 md:p-12 rounded-lg border border-white/10 shadow-xl">
             <p className="text-lg md:text-xl leading-relaxed text-gray-200 mb-6">
@@ -110,16 +104,14 @@ export default function HackathonPage() {
           </div>
         </div>
 
-        {/* Themes Section */}
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-bold uppercase leading-none mb-8">
             Hackathon Themes
           </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent mb-8"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-[#6aaff1] to-transparent mb-8"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Theme 1 */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.2)]">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-[#6aaff1]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(106,175,241,0.2)]">
               <div className="text-3xl mb-4">🔬</div>
               <h3 className="text-xl md:text-2xl font-bold mb-3">
                 AI/ML in Testing
@@ -130,8 +122,7 @@ export default function HackathonPage() {
               </p>
             </div>
 
-            {/* Theme 2 */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.2)]">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-[#6aaff1]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(106,175,241,0.2)]">
               <div className="text-3xl mb-4">🛡️</div>
               <h3 className="text-xl md:text-2xl font-bold mb-3">
                 Hardware Security
@@ -142,8 +133,7 @@ export default function HackathonPage() {
               </p>
             </div>
 
-            {/* Theme 3 */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.2)]">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-[#6aaff1]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(106,175,241,0.2)]">
               <div className="text-3xl mb-4">⚡</div>
               <h3 className="text-xl md:text-2xl font-bold mb-3">
                 Low-Power Design
@@ -155,8 +145,7 @@ export default function HackathonPage() {
               </p>
             </div>
 
-            {/* Theme 4 */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.2)]">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-[#6aaff1]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(106,175,241,0.2)]">
               <div className="text-3xl mb-4">🔧</div>
               <h3 className="text-xl md:text-2xl font-bold mb-3">
                 DFT Innovation
@@ -167,8 +156,7 @@ export default function HackathonPage() {
               </p>
             </div>
 
-            {/* Theme 5 */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.2)]">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-[#6aaff1]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(106,175,241,0.2)]">
               <div className="text-3xl mb-4">📊</div>
               <h3 className="text-xl md:text-2xl font-bold mb-3">
                 Test Data Analytics
@@ -179,8 +167,7 @@ export default function HackathonPage() {
               </p>
             </div>
 
-            {/* Theme 6 */}
-            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-yellow-400/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.2)]">
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:border-[#6aaff1]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(106,175,241,0.2)]">
               <div className="text-3xl mb-4">🎯</div>
               <h3 className="text-xl md:text-2xl font-bold mb-3">
                 Open Innovation
@@ -193,12 +180,11 @@ export default function HackathonPage() {
           </div>
         </div>
 
-        {/* Prizes Section */}
         <div className="mb-16">
           {/*<h2 className="text-4xl md:text-5xl font-bold uppercase leading-none mb-8">
             Prizes & Recognition
           </h2>*/}
-          <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent mb-8"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-[#6aaff1] to-transparent mb-8"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* First Prize */}
@@ -241,9 +227,7 @@ export default function HackathonPage() {
           </div>*/}
         </div>
 
-        {/* Two Column Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 mb-16">
-          {/* Who Can Participate */}
           <div className="relative">
             <div className="mb-6 pb-2 border-b border-white/30 w-fit">
               <h3 className="text-3xl md:text-4xl font-bold uppercase">
@@ -253,7 +237,7 @@ export default function HackathonPage() {
 
             <div className="space-y-4 text-base md:text-lg text-gray-200 leading-relaxed">
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Students:</strong>{" "}
                   Undergraduate and graduate students from any discipline with
@@ -262,7 +246,7 @@ export default function HackathonPage() {
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Professionals:</strong>{" "}
                   Industry professionals, researchers, and engineers working in
@@ -270,21 +254,21 @@ export default function HackathonPage() {
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Enthusiasts:</strong> Anyone
                   passionate about hardware innovation and problem-solving.
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Teams:</strong> Form teams of
                   2-4 members. Solo participation is also welcome!
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Open to All:</strong> No prior
                   hackathon experience required. Beginners are encouraged to
@@ -294,7 +278,6 @@ export default function HackathonPage() {
             </div>
           </div>
 
-          {/* What You Get */}
           <div className="relative">
             <div className="mb-6 pb-2 border-b border-white/30 w-fit">
               <h3 className="text-3xl md:text-4xl font-bold uppercase">
@@ -304,7 +287,7 @@ export default function HackathonPage() {
 
             <div className="space-y-4 text-base md:text-lg text-gray-200 leading-relaxed">
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Expert Mentorship:</strong>{" "}
                   Guidance from industry leaders and academic experts throughout
@@ -312,7 +295,7 @@ export default function HackathonPage() {
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Tools & Resources:</strong>{" "}
                   Access to premium EDA tools, cloud computing resources, and
@@ -320,7 +303,7 @@ export default function HackathonPage() {
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Networking:</strong> Connect
                   with peers, professionals, and potential employers from
@@ -328,21 +311,21 @@ export default function HackathonPage() {
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Food & Refreshments:</strong>{" "}
                   Meals, snacks, and beverages provided throughout the event.
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Swag & Goodies:</strong> Event
                   merchandise, t-shirts, and sponsor swag for all participants.
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold text-xl">•</span>
+                <span className="text-[#6aaff1] font-bold text-xl">•</span>
                 <p>
                   <strong className="text-white">Certificates:</strong>{" "}
                   Participation certificates for all attendees and special
@@ -353,17 +336,15 @@ export default function HackathonPage() {
           </div>
         </div>
 
-        {/* Timeline Section */}
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-bold uppercase leading-none mb-8">
             Event Schedule
           </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent mb-8"></div>
+          <div className="w-32 h-1 bg-gradient-to-r from-[#6aaff1] to-transparent mb-8"></div>
 
           <div className="space-y-4">
-            {/* Day 1 */}
             <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10">
-              <h3 className="text-2xl font-bold mb-4 text-yellow-400">
+              <h3 className="text-2xl font-bold mb-4 text-[#6aaff1]">
                 Day 1 - July 19, 2026
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -394,9 +375,8 @@ export default function HackathonPage() {
               </div>
             </div>
 
-            {/* Day 2 */}
             <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10">
-              <h3 className="text-2xl font-bold mb-4 text-yellow-400">
+              <h3 className="text-2xl font-bold mb-4 text-[#6aaff1]">
                 Day 2 - July 20, 2026
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -427,9 +407,8 @@ export default function HackathonPage() {
               </div>
             </div>
 
-            {/* Day 3 */}
             <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10">
-              <h3 className="text-2xl font-bold mb-4 text-yellow-400">
+              <h3 className="text-2xl font-bold mb-4 text-[#6aaff1]">
                 Day 3 - July 21, 2026
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -462,66 +441,64 @@ export default function HackathonPage() {
           </div>
         </div>
 
-        {/* Important Dates Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           <div className="lg:col-span-2">
-            {/* Rules & Guidelines */}
             <div className="bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10">
               <h3 className="text-3xl font-bold mb-6 border-b border-white/20 pb-3">
                 Rules & Guidelines
               </h3>
               <ul className="space-y-3 text-gray-200">
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-400 mt-1">▸</span>
+                  <span className="text-[#6aaff1] mt-1">▸</span>
                   <span>
                     All team members must be registered participants of ITC
                     India 2026.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-400 mt-1">▸</span>
+                  <span className="text-[#6aaff1] mt-1">▸</span>
                   <span>
                     Teams can consist of 1-4 members. Cross-institution teams
                     are allowed.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-400 mt-1">▸</span>
+                  <span className="text-[#6aaff1] mt-1">▸</span>
                   <span>
                     All code and designs must be original work created during
                     the hackathon period.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-400 mt-1">▸</span>
+                  <span className="text-[#6aaff1] mt-1">▸</span>
                   <span>
                     Use of existing libraries, frameworks, and APIs is
                     permitted, but must be documented.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-400 mt-1">▸</span>
+                  <span className="text-[#6aaff1] mt-1">▸</span>
                   <span>
                     Projects will be judged on innovation, technical complexity,
                     practicality, and presentation.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-400 mt-1">▸</span>
+                  <span className="text-[#6aaff1] mt-1">▸</span>
                   <span>
                     All submissions must include source code, documentation, and
                     a demo/presentation.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-400 mt-1">▸</span>
+                  <span className="text-[#6aaff1] mt-1">▸</span>
                   <span>
                     Participants must follow the IEEE Code of Ethics and
                     maintain professional conduct.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-yellow-400 mt-1">▸</span>
+                  <span className="text-[#6aaff1] mt-1">▸</span>
                   <span>
                     Organizers reserve the right to disqualify teams violating
                     rules or exhibiting misconduct.
@@ -531,10 +508,9 @@ export default function HackathonPage() {
             </div>
           </div>
 
-          {/* Important Dates */}
           <div className="space-y-6">
-            <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 backdrop-blur-sm p-6 rounded-lg border-2 border-yellow-400/50 shadow-[0_0_25px_rgba(234,179,8,0.2)]">
-              <h3 className="text-2xl font-bold mb-6 text-yellow-400 border-b border-yellow-400/30 pb-3">
+            <div className="bg-gradient-to-br from-[#6aaff1]/20 to-[#6aaff1]/10 backdrop-blur-sm p-6 rounded-lg border-2 border-[#6aaff1]/50 shadow-[0_0_25px_rgba(106,175,241,0.2)]">
+              <h3 className="text-2xl font-bold mb-6 text-[#6aaff1] border-b border-[#6aaff1]/30 pb-3">
                 Important Dates
               </h3>
               <div className="space-y-5">
@@ -560,14 +536,13 @@ export default function HackathonPage() {
                   <p className="text-xs text-gray-300 uppercase tracking-wide mb-1">
                     Hackathon Dates
                   </p>
-                  <p className="text-xl font-bold text-yellow-400">
+                  <p className="text-xl font-bold text-[#6aaff1]">
                     July 19-21, 2026
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Contact Info */}
             <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10">
               <h4 className="font-bold text-lg mb-4 text-white">Contact Us</h4>
               <div className="space-y-3 text-sm">
@@ -577,7 +552,7 @@ export default function HackathonPage() {
                   </span>
                   <a
                     href="mailto:hackathon@itctestweekindia.org"
-                    className="text-yellow-400 hover:underline break-all"
+                    className="text-[#6aaff1] hover:underline break-all"
                   >
                     hackathon@itctestweekindia.org
                   </a>
@@ -588,7 +563,7 @@ export default function HackathonPage() {
                   </span>
                   <a
                     href="http://www.itctestweekindia.org"
-                    className="text-yellow-400 hover:underline"
+                    className="text-[#6aaff1] hover:underline"
                   >
                     www.itctestweekindia.org
                   </a>
@@ -598,8 +573,7 @@ export default function HackathonPage() {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-yellow-500/20 via-yellow-600/10 to-transparent backdrop-blur-sm p-12 rounded-lg border border-yellow-400/30 text-center">
+        <div className="bg-gradient-to-r from-[#6aaff1]/20 via-[#6aaff1]/10 to-transparent backdrop-blur-sm p-12 rounded-lg border border-[#6aaff1]/30 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 uppercase">
             Ready to Innovate?
           </h2>
@@ -608,7 +582,7 @@ export default function HackathonPage() {
             testing. Register now and be part of this extraordinary event!
           </p>
           <Link href="/hackathon/register">
-            <button className="bg-yellow-500 hover:bg-yellow-400 text-[#03396c] text-xl md:text-2xl font-bold py-5 px-14 rounded-lg shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all duration-300 uppercase tracking-wider hover:scale-105">
+            <button className="bg-[#6aaff1] hover:bg-[#6aaff1]/90 text-[#03396c] text-xl md:text-2xl font-bold py-5 px-14 rounded-lg shadow-[0_0_30px_rgba(106,175,241,0.4)] transition-all duration-300 uppercase tracking-wider hover:scale-105">
               Register for Hackathon
             </button>
           </Link>

@@ -25,7 +25,7 @@ const navLinks = [
     href: "#",
     dropdown: [
       { name: "Call for Sponsors", href: "/call-for-sponsors" },
-      { name: "Sponsors Page", href: "/sponsors" },
+      { name: "Our Sponsors ", href: "/sponsors" },
     ],
   },
   { name: "CONTACT US", href: "/contact" },
@@ -116,14 +116,14 @@ export default function Navbar() {
                 pathname === "/fellowship/register") && (
                 <button
                   onClick={() => router.push("/dashboard")}
-                  className="px-4 py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors text-sm font-poppins font-semibold"
+                  className="px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-black rounded-full hover:bg-white/30 transition-colors text-sm font-poppins font-semibold whitespace-nowrap"
                 >
                   Dashboard
                 </button>
               )}
               <button
                 onClick={handleSignOut}
-                className="px-4 py-2 bg-white text-black rounded-full hover:bg-gray-100 transition-colors text-sm font-poppins font-semibold"
+                className="px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-black rounded-full hover:bg-white/30 transition-colors text-sm font-poppins font-semibold whitespace-nowrap"
               >
                 Sign Out
               </button>

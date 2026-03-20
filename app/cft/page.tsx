@@ -9,7 +9,7 @@ export default function CallForTutorials() {
           <h1 className="text-3xl md:text-5xl font-bold mb-4">
             10th IEEE INTERNATIONAL TEST CONFERENCE INDIA 2026
           </h1>
-          <p className="text-xl md:text-2xl font-semibold text-yellow-400">
+          <p className="text-xl md:text-2xl font-semibold text-[#6aaff1]">
             JUL 19-21, 2026 | BENGALURU, INDIA
           </p>
           <h2 className="text-4xl md:text-[64px] font-bold mt-8 tracking-tight text-white">
@@ -168,8 +168,8 @@ export default function CallForTutorials() {
           {/* Sidebar Information */}
           <div className="lg:col-span-1 space-y-8">
             {/* Important Dates Box */}
-            <div className="bg-[#1a4b7c] p-6 rounded-lg border border-yellow-400/50 shadow-lg">
-              <h3 className="text-xl font-bold mb-4 text-yellow-400 border-b border-yellow-400/30 pb-2">
+            <div className="bg-[#1a4b7c] p-6 rounded-lg border border-[#6aaff1]/50 shadow-lg">
+              <h3 className="text-xl font-bold mb-4 text-[#6aaff1] border-b border-[#6aaff1]/30 pb-2">
                 Important Dates
               </h3>
               <div className="space-y-4">

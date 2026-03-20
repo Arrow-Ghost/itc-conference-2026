@@ -9,7 +9,7 @@ export default function AcademiaResearchTrack() {
           <h1 className="text-3xl md:text-5xl font-bold mb-4">
             10th IEEE INTERNATIONAL TEST CONFERENCE INDIA 2026
           </h1>
-          <p className="text-xl md:text-2xl font-semibold text-yellow-400">
+          <p className="text-xl md:text-2xl font-semibold text-[#6aaff1]">
             JULY 19-21, 2026 | RADISSON BLU, MARATHAHALLI, BENGALURU
           </p>
           <h2 className="text-4xl md:text-[64px] font-bold mt-8 tracking-tight text-white">
@@ -182,8 +182,8 @@ export default function AcademiaResearchTrack() {
           {/* Sidebar Information */}
           <div className="lg:col-span-1 space-y-8">
             {/* Submit Button Box */}
-            <div className="bg-[#1a4b7c] p-6 rounded-lg border border-yellow-400/50 shadow-lg sticky top-24">
-              <h3 className="text-xl font-bold mb-4 text-yellow-400 border-b border-yellow-400/30 pb-2">
+            <div className="bg-[#1a4b7c] p-6 rounded-lg border border-[#6aaff1]/50 shadow-lg sticky top-24">
+              <h3 className="text-xl font-bold mb-4 text-[#6aaff1] border-b border-[#6aaff1]/30 pb-2">
                 Submit Research
               </h3>
               <p className="text-sm text-gray-200 mb-6">
@@ -192,7 +192,7 @@ export default function AcademiaResearchTrack() {
               <div className="mt-4">
                 <a
                   href="https://easychair.org/conferences/?conf=itcindia2026"
-                  className="block w-full bg-yellow-500 hover:bg-yellow-400 text-[#03396c] font-bold text-center py-3 rounded transition-colors"
+                  className="block w-full bg-[#6aaff1] hover:bg-[#6aaff1]/90 text-[#03396c] font-bold text-center py-3 rounded transition-colors"
                 >
                   SUBMIT ACADEMIA RESEARCH TRACK
                 </a>
