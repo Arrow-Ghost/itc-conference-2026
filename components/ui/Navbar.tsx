@@ -97,7 +97,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href!}
-                  className="font-poppins font-bold text-[16px] xl:text-[20px] text-white hover:text-gray-300 transition-colors"
+                  className="font-poppins font-bold text-[16px] xl:text-[20px] text-white hover:text-gray-300 transition-colors whitespace-nowrap"
                 >
                   {link.name}
                 </Link>
@@ -176,7 +176,7 @@ export default function Navbar() {
 
       {isMobileMenuOpen && (
         <div className="fixed top-[56px] sm:top-[60px] left-0 right-0 bg-[#03396c] border-b-[2px] border-white z-40 xl:hidden shadow-lg animate-slideDown max-h-[calc(100vh-60px)] overflow-y-auto">
-          <div className="flex flex-col py-2">
+          <div className="flex flex-col py-">
             {navLinks.map((link) => (
               <div key={link.name}>
                 {link.dropdown ? (

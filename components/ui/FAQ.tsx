@@ -7,7 +7,7 @@ export default function FAQ() {
       className="faq-section relative w-full py-8 sm:py-12 md:py-16 px-[5%] sm:px-[4%] md:px-[3%] lg:px-[2.5%] xl:px-[2.25%] text-white overflow-x-hidden"
     >
       <div className="absolute top-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] right-[5%] sm:right-[4%] md:right-[3%] lg:right-[2.5%] xl:right-[2.25%] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[110px] xl:h-[123px] my-10 pointer-events-none -z-10 opacity-60 sm:opacity-70 md:opacity-80">
-        <div className="absolute inset-0 w-full h-full rotate-180 scale-y-[-1]">
+        <div className="absolute inset-0 w-full h-full rotate-180 scale-y-[-1] scale-x-[-1]">
           <Image
             src="/images/vector11.svg"
             alt="Separator"

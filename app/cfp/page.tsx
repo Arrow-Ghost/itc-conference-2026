@@ -5,12 +5,20 @@ export default function CallForPapers() {
   return (
     <main className="min-h-screen relative text-white font-poppins selection:bg-white/20">
       <div className="relative z-10 pt-[150px] pb-20 px-4 md:px-10 max-w-[1360px] mx-auto flex flex-col">
-        {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">
-            10th IEEE INTERNATIONAL TEST CONFERENCE INDIA 2026
-          </h1>
-          <p className="text-xl md:text-2xl font-semibold text-yellow-400">
+          <div className="flex items-center justify-center gap-3 md:gap-5 mb-4">
+            <Image
+              src="/itc-logo.svg"
+              alt="ITC Logo"
+              width={60}
+              height={60}
+              className="w-9/12 h-9/12 md:w-14 md:h-14 object-contain mb-9"
+            />
+            <h1 className="text-3xl md:text-5xl font-bold">
+              10th IEEE INTERNATIONAL TEST CONFERENCE INDIA 2026
+            </h1>
+          </div>
+          <p className="text-xl md:text-2xl font-semibold text-[#6aaff1]">
             JULY 19-21, 2026 | RADISSON BLU, MARATHAHALLI, BENGALURU
           </p>
           <h2 className="text-4xl md:text-[64px] font-bold mt-8 tracking-tight text-white">
@@ -239,8 +247,8 @@ export default function CallForPapers() {
           {/* Sidebar Information */}
           <div className="lg:col-span-1 space-y-8">
             {/* Important Dates Box */}
-            <div className="bg-[#1a4b7c] p-6 rounded-lg border border-yellow-400/50 shadow-lg sticky top-24">
-              <h3 className="text-xl font-bold mb-4 text-yellow-400 border-b border-yellow-400/30 pb-2">
+            <div className="bg-[#1a4b7c] p-6 rounded-lg border border-[#6aaff1]/50 shadow-lg sticky top-24">
+              <h3 className="text-xl font-bold mb-4 text-[#6aaff1] border-b border-[#6aaff1]/30 pb-2">
                 Important Dates
               </h3>
               <div className="space-y-4">
@@ -273,7 +281,7 @@ export default function CallForPapers() {
               <div className="mt-6 pt-4 border-t border-white/10">
                 <a
                   href="https://easychair.org/conferences/?conf=itcindia2026"
-                  className="block w-full bg-yellow-500 hover:bg-yellow-400 text-[#03396c] font-bold text-center py-3 rounded transition-colors"
+                  className="block w-full bg-[#6aaff1] hover:bg-[#6aaff1]/90 text-[#03396c] font-bold text-center py-3 rounded transition-colors"
                 >
                   SUBMIT PAPER
                 </a>
@@ -334,7 +342,7 @@ function TopicCategory({
 }) {
   return (
     <div>
-      <h4 className="text-lg font-semibold text-yellow-400 mb-2">{title}</h4>
+      <h4 className="text-lg font-semibold text-[#6aaff1] mb-2">{title}</h4>
       <ul className="list-disc list-outside ml-5 space-y-1 text-gray-200 text-sm">
         {children}
       </ul>

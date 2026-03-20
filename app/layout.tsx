@@ -59,7 +59,11 @@ export const metadata: Metadata = {
   title: "ITC India 2026 - IEEE International Test Conference",
   description:
     "10th IEEE International Test Conference INDIA - An initiative towards India's semiconductor ecosystem",
+  icons: {
+    icon: "/itc-logo.svg",
+  },
 };
+
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -78,9 +82,7 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${urbanist.variable} ${poppins.variable} ${robotoSlab.variable} ${angkor.variable} ${inter.variable} ${sarpanch.variable} antialiased bg-[#03396c] selection:bg-white/20 relative`}
       >
-        {/* Global Background Elements */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          {/* Background Pattern */}
           <div
             className="absolute inset-0 opacity-10 bg-repeat"
             style={{
@@ -89,7 +91,6 @@ export default function RootLayout({
             }}
           />
 
-          {/* Vertical Grid Lines */}
           <div
             className="absolute top-0 bottom-0 left-[5%] sm:left-[4%] md:left-[3%] lg:left-[2.5%] xl:left-[2.25%] w-[1px] opacity-60 sm:opacity-70 md:opacity-80"
             style={{
@@ -106,7 +107,6 @@ export default function RootLayout({
             }}
           ></div>
 
-          {/* Horizontal Grid Lines */}
           <div
             className="absolute bottom-[0.6%] left-0 right-0 h-[1px] opacity-60 sm:opacity-70 md:opacity-80"
             style={{
