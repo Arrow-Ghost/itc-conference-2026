@@ -31,7 +31,7 @@ export const members2: Member[] = [
     link: "https://www.linkedin.com/in/subhadip-kundu-94862a24",
     img: "p45.png",
     name: "Subhadip Kundu",
-    comp: "Qualcomm, India",
+    comp: "Cadence, India",
   },
   {
     id: 3,
@@ -143,7 +143,7 @@ export const members6: Member[] = [
     link: "https://www.linkedin.com/in/sreejit-chakravarty?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BTMrtEoNiSF%2B4f6%2Bs3Er4aQ%3D%3D",
     img: "sreejit_1.png",
     name: "Sreejit Chakravarty",
-    comp: "Ampere Computing",
+    comp: "Ampere Computing, US",
   }
 ];
 
@@ -172,7 +172,7 @@ export const members8: Member[] = [
     link: "https://www.linkedin.com/in/dr-shylashree-n-1a9504148?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BrnLm6qfjQc2RJHNmvkDzbQ%3D%3D",
     img: "p61.png",
     name: "Dr. Shylashree N",
-    comp: "RVCE",
+    comp: "RVCE, India",
   }
 ];
 
@@ -255,7 +255,7 @@ export const members13: Member[] = [
     link: "https://www.linkedin.com/in/veeresh-shetty-32a2216/",
     img: "p6.png",
     name: "Veeresh Shetty",
-    comp: "Siemens EDA",
+    comp: "Siemens EDA, India",
   },
   {
     id: 24,
@@ -390,13 +390,72 @@ export const members16: Member[] = [
 ];
 
 // Posters Co-Chair
-export const members17: Member[] = [];
+export const members17: Member[] = [
+  {
+  id: 34,
+  link: "https://www.linkedin.com/in/yervant-zorian-40522b1/",
+  img: "p43.png",
+  name: "Dr. Yervant Zorian",
+  comp: "Synopsys, India",
+  },
+  {
+  id: 35,
+  link: "https://www.google.com",
+  img: "p47.png",
+  name: "Scott Davidson",
+  comp: "Retired Computer Scientist, USA",
+  },
+  {
+  id: 36,
+  link: "https://www.linkedin.com/in/ron-press-b8bb462?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  img: "p30.png",
+  name: "Ron Press",
+  comp: "Siemens EDA, USA",
+  },
+];
 
 // Advisory Committee - Row 3
-export const members18: Member[] = [];
+export const members18: Member[] = [
+  {
+  id: 37,
+  link: "https://www.google.com",
+  img: "p38.png",
+  name: "Dr. Rubin Parekhji",
+  comp: "Texas Instruments, India",
+  },
+  {
+  id: 38,
+  link: "https://www.linkedin.com/in/jais-abraham-8b90124/",
+  img: "p17.png",
+  name: "Jais Abraham",
+  comp: "Qualcomm, India",
+  },
+  {
+  id: 39,
+  link: "https://www.linkedin.com/in/ujjwalguin?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  img: 'p42.png',
+  name: "Prof. Ujjwal Guin",
+  comp: "Auburn University, USA",
+  },
+];
 
 // Advisory Committee - Row 4
-export const members19: Member[] = [];
+export const members19: Member[] = [
+  {
+  id: 40,
+  link: "https://www.linkedin.com/in/sameer-chillarige-72385510?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  img: 'p27.png',
+  name: "Sameer Chillarige",
+  comp: "Cadence, India",
+  },
+  {
+  id: 41,
+  link: "https://www.linkedin.com/in/kamlesh-pandey-4800878?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  img: 'p13.png',
+  name: "Kamlesh Pandey",
+  comp: "Krivya Semicon, India",
+  },
+];
 
 // Advisory Committee - Row 5
 export const members20: Member[] = [];
