@@ -31,7 +31,7 @@ export const members2: Member[] = [
     link: "https://www.linkedin.com/in/subhadip-kundu-94862a24",
     img: "p45.png",
     name: "Subhadip Kundu",
-    comp: "Qualcomm, India",
+    comp: "Cadence, India",
   },
   {
     id: 3,
@@ -143,7 +143,7 @@ export const members6: Member[] = [
     link: "https://www.linkedin.com/in/sreejit-chakravarty?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BTMrtEoNiSF%2B4f6%2Bs3Er4aQ%3D%3D",
     img: "sreejit_1.png",
     name: "Sreejit Chakravarty",
-    comp: "Ampere Computing",
+    comp: "Ampere Computing, US",
   }
 ];
 
@@ -172,7 +172,7 @@ export const members8: Member[] = [
     link: "https://www.linkedin.com/in/dr-shylashree-n-1a9504148?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BrnLm6qfjQc2RJHNmvkDzbQ%3D%3D",
     img: "p61.png",
     name: "Dr. Shylashree N",
-    comp: "RVCE",
+    comp: "RVCE, India",
   }
 ];
 
@@ -255,7 +255,7 @@ export const members13: Member[] = [
     link: "https://www.linkedin.com/in/veeresh-shetty-32a2216/",
     img: "p6.png",
     name: "Veeresh Shetty",
-    comp: "Siemens EDA",
+    comp: "Siemens EDA, India",
   },
   {
     id: 24,
@@ -325,13 +325,13 @@ export const members16: Member[] = [
     name: "Navin Bishnoi",
     comp: "Marvell Technology, India",
   },
-  // {
-  //   id: 32,
-  //   link: "https://www.linkedin.com/in/prasad-mantri-5742b156/",
-  //   img: "p34.png",
-  //   name: "Prasad Mantri",
-  //   comp: "Eximietas Design, India",
-  // },
+  {
+  id: 32,
+  link: "https://www.linkedin.com/in/prasad-mantri-5742b156/",
+  img: "p34.png",
+  name: "Prasad Mantri",
+  comp: "Eximietas Design, India",
+  },
 ];
 
 // Posters Co-Chair
