@@ -319,12 +319,67 @@ export const members15: Member[] = [
 // Advisory Committee - Row 1
 export const members16: Member[] = [
   {
-    id: 31,
-    link: "https://www.linkedin.com/in/navin-bishnoi-707a6b3/",
-    img: "p40.png",
-    name: "Navin Bishnoi",
-    comp: "Marvell Technology, India",
+    id: 42,
+    link: "https://www.google.com",
+    img: "p22.png",
+    name: "Prof. Adit Singh",
+    comp: "Auburn University, USA",
   },
+  {
+    id: 43,
+    link: "https://www.linkedin.com/in/virendrasingh/",
+    img: "p4.png",
+    name: "Prof. Virendra Singh",
+    comp: "IIT Bombay, India",
+  },
+  {
+                id: 39,
+                link: "https://www.linkedin.com/in/navin-bishnoi-707a6b3/",
+                img: 'p40.png',
+                name: "Navin Bishnoi",
+                comp: "Marvell Semiconductors, India",
+           
+               },{
+                 id: 41,
+                 link: "https://www.linkedin.com/in/yervant-zorian-40522b1/",
+                 img: "p43.png",
+                 name: "Dr. Yervant Zorian",
+                 comp: "Synopsys, India",
+               },
+               {
+                 id: 45,
+                 link: "https://www.google.com",
+                 img: "p47.png",
+                 name: "Scott Davidson",
+                 comp: "Retired Computer Scientist, USA",
+               },
+               {
+                 id: 47,
+                 link: "https://www.linkedin.com/in/ron-press-b8bb462?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                 img: "p30.png",
+                 name: "Ron Press",
+                 comp: "Siemens EDA, USA",
+               },{
+                 id: 46,
+                 link: "https://www.google.com",
+                 img: "p38.png",
+                 name: "Dr. Rubin Parekhji",
+                 comp: "Texas Instruments, India",
+               },
+               {
+                 id: 49,
+                 link: "https://www.linkedin.com/in/jais-abraham-8b90124/",
+                 img: "p17.png",
+                 name: "Jais Abraham",
+                 comp: "Qualcomm, India",
+               },{
+                       id: 48,
+                       link: "https://www.linkedin.com/in/ujjwalguin?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                       img: 'p42.png',
+                       name: "Prof. Ujjwal Guin",
+                       comp: "Auburn University, USA",
+                  
+                      },
   // {
   //   id: 32,
   //   link: "https://www.linkedin.com/in/prasad-mantri-5742b156/",
