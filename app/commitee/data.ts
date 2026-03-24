@@ -332,16 +332,83 @@ export const members16: Member[] = [
   name: "Prasad Mantri",
   comp: "Eximietas Design, India",
   },
+  
+  {
+  id: 33,
+  link: "https://www.google.com",
+  img: "p22.png",
+  name: "Prof. Adit Singh",
+  comp: "Auburn University, USA",
+  },
 ];
 
 // Posters Co-Chair
-export const members17: Member[] = [];
+export const members17: Member[] = [
+  {
+  id: 34,
+  link: "https://www.linkedin.com/in/yervant-zorian-40522b1/",
+  img: "p43.png",
+  name: "Dr. Yervant Zorian",
+  comp: "Synopsys, India",
+  },
+  {
+  id: 35,
+  link: "https://www.google.com",
+  img: "p47.png",
+  name: "Scott Davidson",
+  comp: "Retired Computer Scientist, USA",
+  },
+  {
+  id: 36,
+  link: "https://www.linkedin.com/in/ron-press-b8bb462?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  img: "p30.png",
+  name: "Ron Press",
+  comp: "Siemens EDA, USA",
+  },
+];
 
 // Advisory Committee - Row 3
-export const members18: Member[] = [];
+export const members18: Member[] = [
+  {
+  id: 37,
+  link: "https://www.google.com",
+  img: "p38.png",
+  name: "Dr. Rubin Parekhji",
+  comp: "Texas Instruments, India",
+  },
+  {
+  id: 38,
+  link: "https://www.linkedin.com/in/jais-abraham-8b90124/",
+  img: "p17.png",
+  name: "Jais Abraham",
+  comp: "Qualcomm, India",
+  },
+  {
+  id: 39,
+  link: "https://www.linkedin.com/in/ujjwalguin?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  img: 'p42.png',
+  name: "Prof. Ujjwal Guin",
+  comp: "Auburn University, USA",
+  },
+];
 
 // Advisory Committee - Row 4
-export const members19: Member[] = [];
+export const members19: Member[] = [
+  {
+  id: 40,
+  link: "https://www.linkedin.com/in/sameer-chillarige-72385510?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  img: 'p27.png',
+  name: "Sameer Chillarige",
+  comp: "Cadence, India",
+  },
+  {
+  id: 41,
+  link: "https://www.linkedin.com/in/kamlesh-pandey-4800878?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  img: 'p13.png',
+  name: "Kamlesh Pandey",
+  comp: "Krivya Semicon, India",
+  },
+];
 
 // Advisory Committee - Row 5
 export const members20: Member[] = [];
