@@ -379,7 +379,21 @@ export const members16: Member[] = [
                        name: "Prof. Ujjwal Guin",
                        comp: "Auburn University, USA",
                   
-                      },
+                      }, {
+                             id: 50,
+                             link: "https://www.linkedin.com/in/sameer-chillarige-72385510?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                             img: 'p27.png',
+                             name: "Sameer Chillarige",
+                             comp: "Cadence, India",
+                        
+                            }, {
+                                   id: 19,
+                                   link: "https://www.linkedin.com/in/kamlesh-pandey-4800878?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                                   img: 'p13.png',
+                                   name: "Kamlesh Pandey",
+                                   comp: "Krivya Semicon, India",
+                              
+                                  }
   // {
   //   id: 32,
   //   link: "https://www.linkedin.com/in/prasad-mantri-5742b156/",

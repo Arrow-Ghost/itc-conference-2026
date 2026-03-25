@@ -193,7 +193,7 @@ export default function SponsorsPage() {
           </div>
           <div className="flex flex-wrap justify-center gap-8">
             {[
-              { name: "Marvel", src: "/images/marvel.png", url: "https://www.marvel.com/" },
+              { name: "Marvel", src: "/images/marvell-logo.svg", url: "https://www.marvell.com/" },
               { name: "Texas Instruments", src: "/images/texasinstruments.png", url: "https://www.ti.com/" },
             ].map((sponsor) => (
               <div
