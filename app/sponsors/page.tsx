@@ -30,7 +30,7 @@ export default function SponsorsPage() {
             <div className="group relative w-full max-w-lg bg-white rounded-xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)] hover:shadow-[0_0_60px_rgba(106,175,241,0.3)] transition-all duration-500 transform hover:-translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200 opacity-100 transition-opacity duration-300"></div>
 
-              <div className="relative p-0 flex flex-col items-center justify-center min-h-[260px] text-center">
+              <div className="relative p-4 flex flex-col items-center justify-center min-h-[260px] text-center">
                 <div className="mb-6 transform group-hover:scale-110 transition-transform duration-500">
                   <img
                     src="/images/caliberinterconnect.png"
@@ -71,7 +71,7 @@ export default function SponsorsPage() {
               
               <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200"></div>
 
-              <div className="relative p-0 flex items-center justify-center min-h-[200px]">
+              <div className="relative p-4 flex items-center justify-center min-h-[200px]">
                 <img
                   src="/images/siemens.png"
                   alt="Siemens"
@@ -153,13 +153,13 @@ export default function SponsorsPage() {
             <div className="h-[1px] bg-gradient-to-l from-transparent to-gray-400 w-16 md:w-32"></div>
           </div>
           <div className="flex flex-wrap justify-center gap-8">
-            <div className="group relative w-full max-w-md bg-white rounded-xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)] hover:shadow-[0_0_60px_rgba(106,175,241,0.3)] transition-all duration-500 transform hover:-translate-y-2">
-              
+            <div className="group relative w-4/5 max-w-md bg-white rounded-xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)] hover:shadow-[0_0_60px_rgba(106,175,241,0.3)] transition-all duration-500 transform hover:-translate-y-2">
+
               <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200"></div>
 
               <div className="relative p-0 flex items-center justify-center min-h-[200px]">
                 <img
-                  src="/images/anoralabs.png"
+                  src="/images/anoralabs.svg"
                   alt="Anora labs"
                   className="h-16 md:h-20 object-contain transition-transform duration-500 group-hover:scale-110"
                 />
@@ -202,7 +202,7 @@ export default function SponsorsPage() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200"></div>
 
-                <div className="relative p-0 flex items-center justify-center min-h-[150px]">
+                <div className="relative p-4 flex items-center justify-center min-h-[150px]">
                   <img
                     src={sponsor.src}
                     alt={sponsor.name}
