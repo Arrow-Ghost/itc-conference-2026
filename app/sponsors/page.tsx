@@ -159,7 +159,7 @@ export default function SponsorsPage() {
 
               <div className="relative p-0 flex items-center justify-center min-h-[200px]">
                 <img
-                  src="/images/anoralabs.png"
+                  src="/images/anoralabs.svg"
                   alt="Anora labs"
                   className="h-16 md:h-20 object-contain transition-transform duration-500 group-hover:scale-110"
                 />
