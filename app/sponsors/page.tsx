@@ -30,22 +30,13 @@ export default function SponsorsPage() {
             <div className="group relative w-full max-w-lg bg-white rounded-xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)] hover:shadow-[0_0_60px_rgba(106,175,241,0.3)] transition-all duration-500 transform hover:-translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200 opacity-100 transition-opacity duration-300"></div>
 
-              <div className="relative p-10 flex flex-col items-center justify-center min-h-[260px] text-center">
+              <div className="relative p-4 flex flex-col items-center justify-center min-h-[260px] text-center">
                 <div className="mb-6 transform group-hover:scale-110 transition-transform duration-500">
-                  <div className="flex flex-col items-center leading-none">
-                    <span
-                      className="text-[#e31e24] text-4xl md:text-5xl font-black tracking-tighter"
-                      style={{ fontFamily: "Arial, sans-serif" }}
-                    >
-                      CALIBER
-                    </span>
-                    <span
-                      className="text-[#1d1d1b] text-xl md:text-2xl font-bold tracking-[0.2em] mt-1"
-                      style={{ fontFamily: "Arial, sans-serif" }}
-                    >
-                      INTERCONNECT
-                    </span>
-                  </div>
+                  <img
+                    src="/images/caliberinterconnect.png"
+                    alt="Caliber Interconnect"
+                    className="h-16 md:h-20 object-contain"
+                  />
                 </div>
 
                 <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-6">
@@ -56,7 +47,7 @@ export default function SponsorsPage() {
               </div>
 
               <a
-                href="https://caliberinterconnects.com/"
+                href="https://caliberinterconnect.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute inset-0 z-20"
@@ -66,24 +57,47 @@ export default function SponsorsPage() {
           </div>
         </section>
 
-        <section className="mb-24 opacity-60 hover:opacity-100 transition-opacity duration-300">
+        {/*<section className="mb-24 opacity-60 hover:opacity-100 transition-opacity duration-300"> looks weird*/}
+        <section className="mb-24">
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="h-[1px] bg-gradient-to-r from-transparent to-gray-400 w-16 md:w-32"></div>
             <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-300 font-space-grotesk tracking-wide uppercase px-4">
-              Platinum Sponsors
+              Platinum Sponsor
             </h2>
             <div className="h-[1px] bg-gradient-to-l from-transparent to-gray-400 w-16 md:w-32"></div>
           </div>
-          <div className="flex justify-center">
-            <div className="border-2 border-dashed border-white/20 rounded-xl p-8 w-full max-w-sm text-center bg-white/5">
-              <p className="text-gray-400 font-medium">
-                Opportunities Available
-              </p>
+          <div className="flex flex-wrap justify-center gap-8">
+            <div className="group relative w-full max-w-md bg-white rounded-xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)] hover:shadow-[0_0_60px_rgba(106,175,241,0.3)] transition-all duration-500 transform hover:-translate-y-2">
+              
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200"></div>
+
+              <div className="relative p-4 flex items-center justify-center min-h-[200px]">
+                <img
+                  src="/images/siemens.png"
+                  alt="Siemens"
+                  className="h-16 md:h-20 object-contain transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-6 left-1/2 -translate-x-1/2">
+                <span className="text-[#03396c] font-semibold text-sm tracking-widest uppercase border-b-2 border-[#03396c]">
+                  Visit Website
+                </span>
+              </div>
+
+              <a
+                href="https://www.siemens.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 z-20"
+                aria-label="Visit Siemens"
+              ></a>
             </div>
           </div>
         </section>
 
-        <section className="mb-24 opacity-60 hover:opacity-100 transition-opacity duration-300">
+        {/*<section className="mb-24 opacity-60 hover:opacity-100 transition-opacity duration-300">*/}
+        <section className="mb-24">
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="h-[1px] bg-gradient-to-r from-transparent to-[#6aaff1] w-12 md:w-24"></div>
             <h2 className="text-xl md:text-2xl font-bold text-center text-[#6aaff1] font-space-grotesk tracking-wide uppercase px-4">
@@ -91,12 +105,125 @@ export default function SponsorsPage() {
             </h2>
             <div className="h-[1px] bg-gradient-to-l from-transparent to-[#6aaff1] w-12 md:w-24"></div>
           </div>
-          <div className="flex justify-center">
-            <div className="border-2 border-dashed border-white/20 rounded-xl p-6 w-full max-w-xs text-center bg-white/5">
-              <p className="text-gray-400 font-medium text-sm">
-                Opportunities Available
-              </p>
+          <div className="flex flex-wrap justify-center gap-8">
+            {[
+              { name: "Qualcomm", src: "/images/qualcomm.png", url: "https://www.qualcomm.com/" },
+              { name: "Cadence", src: "/images/cadence.png", url: "https://www.cadence.com/" },
+              { name: "Synopsys", src: "/images/synopsys.png", url: "https://www.synopsys.com/" },
+              { name: "Teradyne", src: "/images/teradyne.png", url: "https://www.teradyne.com/" },
+            ].map((sponsor) => (
+              <div
+                key={sponsor.name}
+                className="group relative w-full max-w-xs bg-white rounded-xl overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:shadow-[0_0_50px_rgba(106,175,241,0.3)] transition-all duration-500 transform hover:-translate-y-2"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200"></div>
+
+                <div className="relative p-6 flex items-center justify-center min-h-[150px]">
+                  <img
+                    src={sponsor.src}
+                    alt={sponsor.name}
+                    className="h-12 md:h-16 object-contain transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-4 left-1/2 -translate-x-1/2">
+                    <span className="text-[#03396c] font-semibold text-xs tracking-widest uppercase border-b-2 border-[#03396c]">
+                      Visit Website
+                    </span>
+                  </div>
+                </div>
+
+                <a
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 z-20"
+                  aria-label={`Visit ${sponsor.name}`}
+                ></a>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/*<section className="mb-24 opacity-60 hover:opacity-100 transition-opacity duration-300">*/}
+        <section className="mb-24">
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="h-[1px] bg-gradient-to-r from-transparent to-gray-400 w-16 md:w-32"></div>
+            <h2 className="text-xl md:text-2xl font-bold text-center text-gray-300 font-space-grotesk tracking-wide uppercase px-4">
+              Silver Sponsor
+            </h2>
+            <div className="h-[1px] bg-gradient-to-l from-transparent to-gray-400 w-16 md:w-32"></div>
+          </div>
+          <div className="flex flex-wrap justify-center gap-8">
+            <div className="group relative w-4/5 max-w-md bg-white rounded-xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)] hover:shadow-[0_0_60px_rgba(106,175,241,0.3)] transition-all duration-500 transform hover:-translate-y-2">
+
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200"></div>
+
+              <div className="relative p-0 flex items-center justify-center min-h-[200px]">
+                <img
+                  src="/images/anoralabs.svg"
+                  alt="Anora labs"
+                  className="h-16 md:h-20 object-contain transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-6 left-1/2 -translate-x-1/2">
+                <span className="text-[#03396c] font-semibold text-sm tracking-widest uppercase border-b-2 border-[#03396c]">
+                  Visit Website
+                </span>
+              </div>
+
+              <a
+                href="https://www.anoralabs.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 z-20"
+                aria-label="Visit Anora Labs"
+              ></a>
             </div>
+          </div>
+        </section>
+
+        {/*<section className="mb-24 opacity-60 hover:opacity-100 transition-opacity duration-300">*/}
+        <section className="mb-24">
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="h-[1px] bg-gradient-to-r from-transparent to-[#6aaff1] w-12 md:w-24"></div>
+            <h2 className="text-xl md:text-2xl font-bold text-center text-[#6aaff1] font-space-grotesk tracking-wide uppercase px-4">
+              Bronze Sponsors
+            </h2>
+            <div className="h-[1px] bg-gradient-to-l from-transparent to-[#6aaff1] w-12 md:w-24"></div>
+          </div>
+          <div className="flex flex-wrap justify-center gap-8">
+            {[
+              { name: "Marvel", src: "/images/marvell-logo.svg", url: "https://www.marvell.com/" },
+              { name: "Texas Instruments", src: "/images/texasinstruments.png", url: "https://www.ti.com/" },
+            ].map((sponsor) => (
+              <div
+                key={sponsor.name}
+                className="group relative w-full max-w-xs bg-white rounded-xl overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:shadow-[0_0_50px_rgba(106,175,241,0.3)] transition-all duration-500 transform hover:-translate-y-2"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200"></div>
+
+                <div className="relative p-4 flex items-center justify-center min-h-[150px]">
+                  <img
+                    src={sponsor.src}
+                    alt={sponsor.name}
+                    className="h-12 md:h-16 object-contain transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-4 left-1/2 -translate-x-1/2">
+                    <span className="text-[#03396c] font-semibold text-xs tracking-widest uppercase border-b-2 border-[#03396c]">
+                      Visit Website
+                    </span>
+                  </div>
+                </div>
+
+                <a
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 z-20"
+                  aria-label={`Visit ${sponsor.name}`}
+                ></a>
+              </div>
+            ))}
           </div>
         </section>
 
