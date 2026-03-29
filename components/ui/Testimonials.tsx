@@ -4,21 +4,48 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const testimonials = [
-  { id: 1, name: "Full name", company: "Company Name" },
-  { id: 2, name: "Full name", company: "Company Name" },
-  { id: 3, name: "Full name", company: "Company Name" },
-  { id: 4, name: "Full name", company: "Company Name" },
-  { id: 5, name: "Full name", company: "Company Name" },
-  { id: 6, name: "Full name", company: "Company Name" },
-  { id: 7, name: "Full name", company: "Company Name" },
-  { id: 8, name: "Full name", company: "Company Name" },
+  {
+    id: 1,
+    name: "Adam Cron",
+    company: "Synopsys",
+    quote:
+      "ITC was fantastic. It was a huge conference as the one in the States, which I've been to for, you know, 30 something years, but this one was really great.",
+  },
+  {
+    id: 2,
+    name: "Ramesh Saidapet",
+    company: "NXP Semiconductor",
+    quote:
+      "It was really exciting to see the energy and the combination of the young and experienced engineers.",
+  },
+  {
+    id: 3,
+    name: "Dr. Sakthivel Ramachandran",
+    company:
+      "Associate Dean, School of Electronics Engineering, VIT Vellore",
+    quote:
+      "This is one of the beautiful workshops as this conference aims for promoting testing all over India.",
+  },
+  {
+    id: 4,
+    name: "Kshitij Kulshreshtha",
+    company: "Synopsys",
+    quote:
+      "I really enjoyed the ambience around it, the energy that the different tech guys were having here, it was quite the enjoyable ambience for me.",
+  },
+  {
+    id: 5,
+    name: "Suresh Babu",
+    company: "Caliber Interconnect",
+    quote: "I appreciate the IEEE organising committee.",
+  },
 ];
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const extendedTestimonials = [...testimonials, testimonials[0]];
-  const totalSlides = testimonials.length; // 8 slides
+  const totalSlides = testimonials.length;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -99,10 +126,8 @@ export default function Testimonials() {
                       aria-hidden
                     />
                   </div>
-                  <p>loremjhebgjhdsbkjdvkjdkvhbjdhj</p>
-                  <p>hesbdjcsudyub</p>
-                  <p className="flex items-baseline gap-4">
-                    <span>sdbjhbdjhyvhsd</span>
+                  <p>{testimonial.quote}</p>
+                  <p className="flex justify-end items-baseline mt-2">
                     <span className="inline-flex shrink-0 w-[10px] sm:w-[14px] md:w-[18px] xl:w-[24px] h-[8px] sm:h-[11px] md:h-[14px] xl:h-[18px] relative">
                       <Image
                         src="/images/vector-open.svg"
